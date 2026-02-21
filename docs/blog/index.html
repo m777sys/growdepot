@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | GrowDepot</title>
+    <meta name="description" content="Growing tips, equipment reviews, and setup guides for Canadian home growers.">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg: #0a0a0a;
+            --card: #131313;
+            --border: #1e1e1e;
+            --text: #e0e0e0;
+            --text-dim: #888;
+            --accent: #4ade80;
+            --accent-dim: #4ade8033;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(180deg, #1a1a1a 0%, var(--bg) 100%);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+        }
+        
+        .logo span { color: var(--accent); }
+        
+        .tagline {
+            color: var(--text-dim);
+            font-size: 1rem;
+        }
+        
+        .nav {
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 20px;
+            text-align: center;
+        }
+        
+        .nav a {
+            color: var(--text);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.9rem;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        
+        .nav a:hover {
+            background: var(--accent-dim);
+            color: var(--accent);
+        }
+        
+        .nav a.active {
+            background: var(--accent);
+            color: #000;
+            font-weight: 600;
+        }
+        
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+        
+        .intro {
+            color: var(--text-dim);
+            margin-bottom: 48px;
+        }
+        
+        .post {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+            transition: border-color 0.2s;
+        }
+        
+        .post:hover {
+            border-color: var(--accent);
+        }
+        
+        .post-title {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+        
+        .post-title a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .post-title a:hover {
+            color: var(--accent);
+        }
+        
+        .post-meta {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+        
+        .post-excerpt {
+            color: var(--text-dim);
+            line-height: 1.7;
+        }
+        
+        .read-more {
+            display: inline-block;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 16px;
+        }
+        
+        .read-more:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            background: var(--card);
+            border-top: 1px solid var(--border);
+            padding: 40px 20px;
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">Grow<span>Depot</span></div>
+        <p class="tagline">Premium equipment for home growers</p>
+    </header>
+    
+    <nav class="nav">
+        <a href="../">← Home</a>
+        <a href="../#grow-lights">💡 Grow Lights</a>
+        <a href="../#grow-tents">⛺ Grow Tents</a>
+        <a href="/blog/" class="active">📝 Blog</a>
+    </nav>
+    
+    <main>
+        <h1>📝 Grow Guides & Reviews</h1>
+        <p class="intro">Equipment reviews, setup guides, and growing tips for Canadian home growers.</p>
+        
+        <article class="post">
+            <h2 class="post-title">
+                <a href="best-led-grow-lights-canada-2024.html">Best LED Grow Lights in Canada 2024</a>
+            </h2>
+            <div class="post-meta">February 2024 • 5 min read</div>
+            <p class="post-excerpt">
+                Whether you're starting your first indoor grow or upgrading your setup, finding the right LED grow light is crucial. 
+                After testing dozens of options available in Canada, here are my top 3 picks for 2024.
+            </p>
+            <a href="best-led-grow-lights-canada-2024.html" class="read-more">Read article →</a>
+        </article>
+        
+        <article class="post">
+            <h2 class="post-title">
+                <a href="first-grow-setup-beginners-guide.html">Your First Grow Setup: Complete Guide for Canadian Beginners</a>
+            </h2>
+            <div class="post-meta">February 2025 • 8 min read</div>
+            <p class="post-excerpt">
+                Starting your first grow? Here's exactly what you need, from tent to harvest. 
+                Complete shopping list with Canadian Amazon links, total cost breakdown (~$547-667 CAD), 
+                and pro tips from someone who's been there.
+            </p>
+            <a href="first-grow-setup-beginners-guide.html" class="read-more">Read article →</a>
+        </article>
+        
+    </main>
+    
+    <footer>
+        <p>© 2026 GrowDepot • <a href="../">Back to GrowDepot</a></p>
+    </footer>
+</body>
+</html>
