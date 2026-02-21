@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 5 Nutrients Mistakes Beginners Make | GrowDepot</title>
+    <meta name="description" content="Avoid these common nutrient mistakes that kill first grows. Save your plants and your money with these proven tips.">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg: #0a0a0a;
+            --card: #131313;
+            --border: #1e1e1e;
+            --text: #e0e0e0;
+            --text-dim: #888;
+            --accent: #4ade80;
+            --accent-dim: #4ade8033;
+            --warning: #fbbf24;
+            --danger: #ef4444;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(180deg, #1a1a1a 0%, var(--bg) 100%);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+        }
+        
+        .logo span { color: var(--accent); }
+        
+        .nav {
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 20px;
+            text-align: center;
+        }
+        
+        .nav a {
+            color: var(--text);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.9rem;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        
+        .nav a:hover {
+            background: var(--accent-dim);
+            color: var(--accent);
+        }
+        
+        article {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .breadcrumb {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            margin-bottom: 24px;
+        }
+        
+        .breadcrumb a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+        
+        h2 {
+            font-size: 1.4rem;
+            margin: 40px 0 16px;
+            color: var(--accent);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
+        }
+        
+        h3 {
+            font-size: 1.2rem;
+            margin: 32px 0 12px;
+            color: var(--text);
+        }
+        
+        p {
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        
+        .intro {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            margin-bottom: 32px;
+            padding: 20px;
+            background: var(--card);
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+        }
+        
+        .mistake {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+        
+        .mistake h3 {
+            margin-top: 0;
+            color: var(--danger);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .number {
+            background: var(--danger);
+            color: #000;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        
+        .fix {
+            background: var(--accent-dim);
+            border-left: 3px solid var(--accent);
+            padding: 16px;
+            margin: 16px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .fix strong {
+            color: var(--accent);
+        }
+        
+        ul {
+            margin: 16px 0 16px 24px;
+        }
+        
+        li {
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+        
+        .product {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+        
+        .product h3 {
+            margin-top: 0;
+            color: var(--accent);
+        }
+        
+        .price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 12px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: #000;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 12px;
+            transition: all 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--accent-dim);
+        }
+        
+        .tips {
+            background: var(--card);
+            border-left: 3px solid var(--warning);
+            padding: 20px;
+            margin: 24px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tips h4 {
+            color: var(--warning);
+            margin-bottom: 12px;
+        }
+        
+        .disclosure {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 40px 0;
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+        
+        .disclosure strong {
+            color: var(--accent);
+        }
+        
+        footer {
+            background: var(--card);
+            border-top: 1px solid var(--border);
+            padding: 40px 20px;
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">Grow<span>Depot</span></div>
+    </header>
+    
+    <nav class="nav">
+        <a href="../">← Home</a>
+        <a href="./">📝 Blog</a>
+    </nav>
+    
+    <article>
+        <div class="breadcrumb">
+            <a href="../">GrowDepot</a> → <a href="./">Blog</a> → Nutrients Mistakes
+        </div>
+        
+        <h1>Top 5 Nutrients Mistakes Beginners Make (And How to Fix Them)</h1>
+        
+        <p class="intro">
+            I've killed more plants with nutrients than I care to admit. Here are the 5 mistakes I see beginners make over and over — 
+            and exactly how to avoid them. Learn from my failures so you don't repeat them.
+        </p>
+        
+        <div class="mistake">
+            <h3><span class="number">1</span> Overfeeding (Nutrient Burn)</h3>
+            <p>
+                More nutrients ≠ bigger plants. I learned this the hard way when my leaves started curling and turning crispy brown at the tips. 
+                The plant was literally burning from excess nitrogen.
+            </p>
+            <div class="fix">
+                <strong>✓ THE FIX:</strong> Start at 1/4 strength of what the bottle says. Seriously. Your plants don't need full strength until they're established and flowering.
+            </div>
+        </div>
+        
+        <div class="mistake">
+            <h3><span class="number">2</span> Not Checking pH</h3>
+            <p>
+                Your nutrients could be perfect, but if your pH is off, your plants can't absorb them. It's like having food you can't digest. 
+                I spent weeks troubleshooting "deficiencies" that were really just pH lockout.
+            </p>
+            <div class="fix">
+                <strong>✓ THE FIX:</strong> Get a pH pen ($15-25) and check every feeding. Aim for 6.0-6.8 in soil, 5.5-6.5 in hydro. Adjust with pH up/down before watering.
+            </div>
+        </div>
+        
+        <div class="mistake">
+            <h3><span class="number">3</span> Switching Nutrients Too Often</h3>
+            <p>
+                I was the king of this. "My plants look sad... must be the nutrients!" and I'd switch brands mid-grow. 
+                The problem? Plants need consistency. Changing formulas mid-cycle stresses them more.
+            </p>
+            <div class="fix">
+                <strong>✓ THE FIX:</strong> Pick one nutrient line and stick with it for 2-3 grows. Fix other variables (light, temp, humidity) before blaming nutrients.
+            </div>
+        </div>
+        
+        <div class="mistake">
+            <h3><span class="number">4</span> Forgetting to Flush</h3>
+            <p>
+                Salt buildup from synthetic nutrients will eventually kill your plants. The roots get locked out, leaves turn yellow, 
+                and you're left wondering what happened. I lost a whole grow to salt buildup.
+            </p>
+            <div class="fix">
+                <strong>✓ THE FIX:</strong> Flush with plain water every 2-3 weeks (half your pot size worth of water). Final flush the last 2 weeks before harvest.
+            </div>
+        </div>
+        
+        <div class="mistake">
+            <h3><span class="number">5</span> Not Reading the Plant</h3>
+            <p>
+                The bottle says "use X amount every feeding" but your plants don't read bottles. They'll tell you what they need 
+                if you watch. Light green new growth? Might need more nitrogen. Purple stems? Could be phosphorus deficiency.
+            </p>
+            <div class="fix">
+                <strong>✓ THE FIX:</strong> Take photos weekly and compare. Learn to diagnose deficiencies by sight. The bottle is a guideline — your plant is the truth.
+            </div>
+        </div>
+        
+        <h2>What Nutrients Actually Work?</h2>
+        
+        <p>After trying 5+ different nutrient lines, here's what I actually recommend for beginners:</p>
+        
+        <div class="product">
+            <h3>🥇 Best for Beginners: General Hydroponics Flora Trio</h3>
+            <ul>
+                <li>Three-part system (Grow, Micro, Bloom)</li>
+                <li>Forgiving — hard to burn plants</li>
+                <li>Well-documented feeding schedule</li>
+                <li>Works in soil and hydro</li>
+            </ul>
+            <div class="price">~$35 CAD</div>
+            <a href="https://www.amazon.ca/s?k=general+hydroponics+flora+micro+bloom+canada&tag=cannacompare2-20" class="btn" target="_blank" rel="nofollow sponsored">View on Amazon.ca →</a>
+        </div>
+        
+        <div class="product">
+            <h3>🥈 Budget Option: FoxFarm Liquid Nutrient Trio</h3>
+            <ul>
+                <li>Big Bloom + Grow Big + Tiger Bloom</li>
+                <li>Organic-based, easier on plants</li>
+                <li>Great for soil grows</li>
+                <li>Smell is... herbal (you've been warned)</li>
+            </ul>
+            <div class="price">~$65 CAD</div>
+            <a href="https://www.amazon.ca/s?k=foxfarm+grow+big+big+bloom+tiger+bloom&tag=cannacompare2-20" class="btn" target="_blank" rel="nofollow sponsored">View on Amazon.ca →</a>
+        </div>
+        
+        <h2>My Simple Feeding Schedule</h2>
+        
+        <p>Here's what actually works. Keep it simple.</p>
+        
+        <ul>
+            <li><strong>Weeks 1-3 (Seedling/Veg):</strong> 1/4 strength Grow nutrients, pH 6.2-6.5</li>
+            <li><strong>Weeks 4-5 (Late Veg):</strong> 1/2 strength Grow nutrients, pH 6.0-6.5</li>
+            <li><strong>Week 6 (Transition):</strong> 1/2 strength Bloom nutrients start, pH 6.0-6.3</li>
+            <li><strong>Weeks 7+ (Flower):</strong> Full strength Bloom nutrients, pH 5.8-6.2</li>
+            <li><strong>Final 2 weeks:</strong> FLUSH — plain water only</li>
+        </ul>
+        
+        <div class="tips">
+            <h4>💡 Pro Tips That Actually Matter</h4>
+            
+            <ul style="margin: 0;">
+                <li><strong>Always shake bottles</strong> — nutrients settle, especially organic ones</li>
+                <li><strong>Mix nutrients first, THEN pH</strong> — nutrients change pH, so adjust after</li>
+                <li><strong>Let water sit 24 hours</strong> if using tap — chlorine kills microbes (and some nutrients)</li>
+                <li><strong>Less is more</strong> with seedlings — they need almost nothing the first 2 weeks</li>
+            </ul>
+        </div>
+        
+        <h2>Bottom Line</h2>
+        
+        <p>
+            Nutrients aren't magic. Good environment + proper watering + decent light matters way more than which brand you pick. 
+            Focus on the fundamentals first. Start with a forgiving nutrient line like General Hydroponics, follow the schedule, 
+            and learn to read your plants.
+        </p>
+        
+        <p>
+            By grow #3, you'll know exactly what your plants need. Until then? Keep it simple and don't overthink it.
+        </p>
+        
+        <div style="text-align: center; margin: 32px 0;">
+            <a href="../" class="btn" style="padding: 16px 32px; font-size: 1.1rem;">See All Grow Equipment →</a>
+        </div>
+        
+        <div class="disclosure">
+            <strong>Disclosure:</strong> This post contains Amazon affiliates. We earn a small commission at no extra cost to you. Helps keep the site running.
+        </div>
+    </article>
+    
+    <footer>
+        <p>© 2026 GrowDepot • <a href="../">Back to GrowDepot</a> • <a href="./">More Articles</a></p>
+    </footer>
+</body>
+</html>
