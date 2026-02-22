@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CardLord Pro — eBay Price Intelligence for TCG Sellers</title>
+    <meta name="description" content="Weekly automated price briefs for eBay sellers. Know when to lower, hold, or flip. Starting at $49/mo. Limited beta spots available.">
+    <meta name="keywords" content="eBay price tracker, trading card pricing, TCG seller tools, Pokemon card prices, price intelligence software">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fafafa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 18px 48px;
+            background: #fff;
+            color: #667eea;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+        }
+
+        .btn-large {
+            font-size: 1.2rem;
+            padding: 20px 56px;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #222;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 60px;
+        }
+
+        /* Problem/Solution */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .problem-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 4px solid #e74c3c;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .problem-card h3 {
+            color: #e74c3c;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .solution-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .solution-box h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .recs {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .rec {
+            text-align: left;
+        }
+
+        .rec-icon {
+            font-size: 2rem;
+            margin-right: 10px;
+        }
+
+        .rec strong {
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        /* How It Works */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .step {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        .step p {
+            color: #666;
+        }
+
+        /* Pricing */
+        .pricing {
+            background: #f5f5f5;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pricing-card.featured {
+            border: 3px solid #667eea;
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+
+        .badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #e74c3c;
+            color: white;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #667eea;
+            margin: 20px 0;
+        }
+
+        .price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #666;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            text-align: left;
+            margin: 30px 0;
+        }
+
+        .pricing-card li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            color: #555;
+        }
+
+        .pricing-card li:before {
+            content: "✓";
+            color: #27ae60;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .pricing-card .btn {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .best-for {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .urgency {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 40px;
+        }
+
+        .guarantee {
+            background: #fff;
+            color: #333;
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 600px;
+            margin: 60px auto 0;
+            text-align: center;
+        }
+
+        .guarantee h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #27ae60;
+        }
+
+        /* FAQ */
+        .faq-item {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .faq-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #222;
+        }
+
+        .faq-item p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a2e;
+            color: #888;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .recs {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav-mini" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 15px; text-align: center; position: absolute; top: 0; left: 0; right: 0; z-index: 100;">
+        <a href="cardlord-blog/" style="color: white; text-decoration: none; font-weight: 500; padding: 8px 16px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.3);">📚 Blog</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>Stop Guessing Your eBay Prices.<br>Start Profiting.</h1>
+            <p>Weekly price intelligence briefs that tell you exactly when to lower, hold, or flip — before your competition does.</p>
+            <a href="#pricing" class="btn btn-large">Get Beta Access — $49/mo</a>
+        </div>
+    </section>
+
+    <!-- Problem / Solution -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">You're Leaving Money on the Table</h2>
+            <p class="section-subtitle">The manual way isn't working. Here's the fix.</p>
+
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <h3>Listings Sit Unsold</h3>
+                    <p>Your cards are overpriced but you don't know by how much. Competitors move inventory while yours collects dust.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>Missing Flip Opportunities</h3>
+                    <p>Price drops happen fast. By the time you check, the deal is gone and someone else pocketed the profit.</p>
+                </div>
+                <div class="problem-card">
+                    <h3>Wasted Hours</h3>
+                    <p>Manually checking PriceCharting for 100+ listings? That's hours you could spend sourcing more inventory.</p>
+                </div>
+            </div>
+
+            <div class="solution-box">
+                <h2>Here Is Your Weekly Brief</h2>
+                <p style="font-size: 1.2rem; opacity: 0.9;">CardLord monitors PriceCharting 24/7 and sends you simple recommendations:</p>
+
+                <div class="recs">
+                    <div class="rec">
+                        <span class="rec-icon">🔴</span>
+                        <strong>LOWER</strong>
+                        You're 30%+ overpriced
+                    </div>
+                    <div class="rec">
+                        <span class="rec-icon">🟢</span>
+                        <strong>HOLD</strong>
+                        Your price is right
+                    </div>
+                    <div class="rec">
+                        <span class="rec-icon">💰</span>
+                        <strong>FLIP</strong>
+                        Market dropped 15%+
+                    </div>
+                </div>
+
+                <p style="margin-top: 40px; font-size: 1.3rem; font-weight: 600;">No guesswork. Just data-driven decisions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section style="background: white;">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">From signup to profit in 3 simple steps</p>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Connect Your Inventory</h3>
+                    <p>Upload your eBay Seller Hub CSV. Takes 2 minutes. We handle the rest.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Get Your Brief</h3>
+                    <p>Every Monday at 9 AM, receive your personalized pricing report via email.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Act on the Data</h3>
+                    <p>Update listings, snag underpriced flips, increase your profits.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Simple Pricing</h2>
+            <p class="section-subtitle">Choose the plan that fits your business. Scale when ready.</p>
+
+            <div class="pricing-grid">
+                <!-- Beta -->
+                <div class="pricing-card">
+                    <span class="badge">LIMITED: 20 SPOTS</span>
+                    <h3>🚀 Beta Tier</h3>
+                    <div class="price">$49<span>/mo</span></div>
+                    <ul>
+                        <li>Weekly price brief (Mondays)</li>
+                        <li>25 items tracked</li>
+                        <li>Lower/Hold recommendations</li>
+                        <li>Email delivery</li>
+                        <li>Lock-in pricing for life</li>
+                    </ul>
+                    <a href="#" class="btn">Claim Beta Spot</a>
+                    <p class="best-for">For first 20 customers. Price goes to $149 when full.</p>
+                </div>
+
+                <!-- Growth -->
+                <div class="pricing-card featured">
+                    <h3>📈 Growth Tier</h3>
+                    <div class="price">$149<span>/mo</span></div>
+                    <ul>
+                        <li>Daily briefs (Mon-Fri)</li>
+                        <li>100 items tracked</li>
+                        <li>Lower/Hold/Flip alerts</li>
+                        <li>15%+ market drop alerts</li>
+                        <li>Email + Telegram</li>
+                        <li>Priority support</li>
+                    </ul>
+                    <a href="#" class="btn">Start Growing</a>
+                    <p class="best-for">Best for: 50-200 active listings</p>
+                </div>
+
+                <!-- Pro -->
+                <div class="pricing-card">
+                    <h3>⚡ Pro Tier</h3>
+                    <div class="price">$399<span>/mo</span></div>
+                    <ul>
+                        <li>Unlimited items tracked</li>
+                        <li>Real-time flip alerts</li>
+                        <li>Custom category monitoring</li>
+                        <li>1-on-1 onboarding call</li>
+                        <li>API access (coming soon)</li>
+                        <li>White-glove support</li>
+                    </ul>
+                    <a href="#" class="btn">Go Pro</a>
+                    <p class="best-for">Best for: Power sellers & TCG shops</p>
+                </div>
+
+                <!-- Agency -->
+                <div class="pricing-card">
+                    <h3>🏢 Agency Tier</h3>
+                    <div class="price">$899<span>/mo</span></div>
+                    <ul>
+                        <li>Everything in Pro</li>
+                        <li>White-label reports</li>
+                        <li>Multi-account support</li>
+                        <li>Priority API access</li>
+                        <li>Dedicated account manager</li>
+                        <li>Custom integrations</li>
+                    </ul>
+                    <a href="#" class="btn">Contact Sales</a>
+                    <p class="best-for">Best for: Agencies & consultants</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee -->
+    <section style="background: #f9f9f9;">
+        <div class="container">
+            <div class="guarantee">
+                <h3>✅ 30-Day Money-Back Guarantee</h3>
+                <p>If CardLord Pro doesn't pay for itself in your first month, I'll refund every penny. No questions asked.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">FAQ</h2>
+            <p class="section-subtitle">Quick answers to common questions</p>
+
+            <div class="faq-item">
+                <h3>How is this different from checking PriceCharting myself?</h3>
+                <p>You could do it manually, but you'd need to check 100+ listings daily and calculate percentages yourself. CardLord does it in seconds and sends you the actionable answers — no spreadsheets, no math, just profit signals.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What's the catch with Beta pricing?</h3>
+                <p>No catch. I need real users to refine the system. You get a killer deal, I get feedback. When I hit 20 Beta customers, the price goes to $149/mo permanently. Lock in $49 now and keep it forever.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>What if I sell more than cards?</h3>
+                <p>Pro and Agency tiers support custom categories — sneakers, watches, electronics, whatever you flip. Just let me know what categories and I'll customize your briefs.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Do I need technical skills?</h3>
+                <p>Nope. Upload your eBay CSV straight from Seller Hub → Reports → Download. That's it. I'll handle everything else and your first brief arrives next Monday.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Stop Guessing?</h2>
+            <p class="urgency">Beta spots are filling up. Once they're gone, entry pricing jumps to $149/mo.</p>
+            <a href="#pricing" class="btn btn-large">Claim Your Beta Spot — $49/mo</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2026 CardLord Pro. Built for serious sellers.</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">Questions? <a href="mailto:support@cardlord.pro">support@cardlord.pro</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>
