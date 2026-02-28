@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CardLord Pro — eBay Price Intelligence for Trading Cards</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            line-height: 1.6;
+        }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        header { text-align: center; padding: 60px 0; }
+        .emoji { font-size: 64px; margin-bottom: 20px; }
+        h1 { font-size: 48px; font-weight: 800; margin-bottom: 16px; }
+        .tagline { font-size: 20px; color: #a0a0a0; max-width: 600px; margin: 0 auto; }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 60px 0;
+            text-align: center;
+        }
+        .stat { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 12px; }
+        .stat-number { font-size: 36px; font-weight: 700; color: #4ecca3; }
+        .stat-label { color: #a0a0a0; margin-top: 8px; }
+        .features { margin: 60px 0; }
+        .features h2 { text-align: center; font-size: 32px; margin-bottom: 40px; }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .feature {
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 4px solid #4ecca3;
+        }
+        .feature h3 { font-size: 20px; font-weight: 600; margin-bottom: 12px; }
+        .feature p { color: #a0a0a0; }
+        .pricing { margin: 60px 0; text-align: center; }
+        .pricing h2 { font-size: 32px; margin-bottom: 40px; }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .pricing-card {
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        .pricing-card:hover { border-color: #4ecca3; transform: translateY(-5px); }
+        .pricing-card.popular { border-color: #4ecca3; position: relative; }
+        .popular-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #4ecca3;
+            color: #1a1a2e;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .tier-name { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        .tier-price { font-size: 36px; font-weight: 800; color: #4ecca3; }
+        .tier-price span { font-size: 16px; color: #a0a0a0; }
+        .tier-features { margin: 20px 0; text-align: left; }
+        .tier-features li { color: #a0a0a0; margin: 8px 0; list-style: none; padding-left: 20px; position: relative; }
+        .tier-features li:before { content: "✓"; position: absolute; left: 0; color: #4ecca3; }
+        .cta-button {
+            display: block;
+            background: #4ecca3;
+            color: #1a1a2e;
+            text-decoration: none;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 18px;
+            text-align: center;
+            margin-top: 30px;
+            transition: background 0.3s;
+        }
+        .cta-button:hover { background: #3db892; }
+        .limited { text-align: center; margin-top: 60px; padding: 30px; background: rgba(255,255,255,0.05); border-radius: 12px; }
+        .limited h3 { font-size: 24px; margin-bottom: 12px; }
+        .spots { font-size: 18px; color: #ff6b6b; font-weight: 600; }
+        footer { text-align: center; padding: 40px 0; color: #606060; }
+        @media (max-width: 768px) {
+            .stats, .feature-grid, .pricing-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 36px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="emoji">🃏</div>
+            <h1>CardLord Pro</h1>
+            <p class="tagline">Automated price intelligence for eBay trading card sellers. Stop guessing. Start selling faster.</p>
+        </header>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">159</div>
+                <div class="stat-label">Avg Items Tracked</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">60%</div>
+                <div class="stat-label">Stale Inventory Reduction</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">$1,200</div>
+                <div class="stat-label">Additional Sales/Month</div>
+            </div>
+        </div>
+
+        <section class="features">
+            <h2>What You Get</h2>
+            <div class="feature-grid">
+                <div class="feature">
+                    <h3>🔴 Price Optimization</h3>
+                    <p>Daily briefs flagging which of your listings are overpriced vs. PriceCharting market data. Get specific target prices, not vague advice.</p>
+                </div>
+                <div class="feature">
+                    <h3>💰 Flip Opportunities</h3>
+                    <p>Monitors 20 high-liquid cards (Pokemon, One Piece, Magic). Get alerts when market drops 10%+ — buy low, sell high.</p>
+                </div>
+                <div class="feature">
+                    <h3>🎯 Dual Currency</h3>
+                    <p>All prices in CAD and USD. Know exactly what you're leaving on the table with current exchange rates.</p>
+                </div>
+                <div class="feature">
+                    <h3>🤫 White Label</h3>
+                    <p>No branding. Your clients think YOU built this. Perfect for PowerSellers and resellers managing multiple accounts.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="free-tool-cta" style="text-align: center; padding: 40px; background: rgba(78,204,163,0.1); border-radius: 16px; margin: 40px 0; border: 2px solid rgba(78,204,163,0.3);">
+            <h3 style="font-size: 24px; margin-bottom: 12px;">🧪 Want to see how it works first?</h3>
+            <p style="color: #a0a0a0; margin-bottom: 20px;">Paste 5 card titles + prices from your eBay store. Get instant analysis showing which are overpriced.</p>
+            <a href="free-sample.html" class="cta-button" style="display: inline-block; background: transparent; border: 2px solid #4ecca3; color: #4ecca3;">
+                🔍 Analyze My Prices (Free)
+            </a>
+            <p style="font-size: 13px; color: #666; margin-top: 15px;">No signup required • Takes 10 seconds • Works with Pokemon, One Piece, Magic</p>
+        </div>
+
+        <section class="pricing">
+            <h2>Choose Your Tier</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="tier-name">🚀 Beta</div>
+                    <div class="tier-price">$49<span>/mo</span></div>
+                    <ul class="tier-features">
+                        <li>Weekly price briefs</li>
+                        <li>25 items tracked</li>
+                        <li>1 eBay store</li>
+                        <li>Email delivery</li>
+                    </ul>
+                </div>
+                <div class="pricing-card popular">
+                    <div class="popular-badge">MOST POPULAR</div>
+                    <div class="tier-name">📈 Growth</div>
+                    <div class="tier-price">$149<span>/mo</span></div>
+                    <ul class="tier-features">
+                        <li>Daily price briefs</li>
+                        <li>100 items tracked</li>
+                        <li>3 eBay stores</li>
+                        <li>Email + Webhook</li>
+                        <li>Flip alerts</li>
+                    </ul>
+                </div>
+                <div class="pricing-card">
+                    <div class="tier-name">⚡ Pro</div>
+                    <div class="tier-price">$399<span>/mo</span></div>
+                    <ul class="tier-features">
+                        <li>Real-time alerts</li>
+                        <li>Unlimited items</li>
+                        <li>10 eBay stores</li>
+                        <li>API access</li>
+                        <li>Priority support</li>
+                    </ul>
+                </div>
+                <div class="pricing-card">
+                    <div class="tier-name">🏢 Agency</div>
+                    <div class="tier-price">$899<span>/mo</span></div>
+                    <ul class="tier-features">
+                        <li>White-label everything</li>
+                        <li>Unlimited stores</li>
+                        <li>Sub-accounts</li>
+                        <li>Dedicated manager</li>
+                        <li>Custom categories</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <a href="#signup" class="cta-button">Join Beta — $49/mo</a>
+        </section>
+
+        <div class="limited">
+            <h3>⚠️ Beta Access Limited</h3>
+            <p class="spots">Spots 8/20 remaining. PriceCharting API limits us to 100 lookups/day. Once full, we wait for upgrade.</p>
+        </div>
+
+        <footer>
+            <p>CardLord Pro 2024. Powered by PriceCharting + TCGDex.</p>
+            <p>DM @m777888999666 on X for direct access.</p>
+        </footer>
+    </div>
+</body>
+</html>
