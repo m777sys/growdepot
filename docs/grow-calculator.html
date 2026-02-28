@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grow Setup Calculator | GrowDepot</title>
+    <meta name="description" content="Calculate your perfect grow setup. Find tent size, light wattage, and total cost in 60 seconds.">
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E20VJQJG27"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-E20VJQJG27');
+    </script>
+    
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --card: #131313;
+            --border: #1e1e1e;
+            --text: #e0e0e0;
+            --text-dim: #888;
+            --accent: #4ade80;
+            --accent-dim: #4ade8033;
+            --warning: #fbbf24;
+            --danger: #ef4444;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 40px 0 30px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 40px;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .logo span { color: var(--accent); }
+        
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .subtitle {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+        }
+        
+        /* Progress Bar */
+        .progress-container {
+            margin-bottom: 40px;
+        }
+        
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+        }
+        
+        .progress-step {
+            color: var(--text-dim);
+        }
+        
+        .progress-step.active {
+            color: var(--accent);
+        }
+        
+        .progress-bar {
+            height: 6px;
+            background: var(--border);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), #22c55e);
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+        
+        /* Questions */
+        .question {
+            display: none;
+        }
+        
+        .question.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; }
+        }
+        
+        .question h2 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+        
+        .question-desc {
+            color: var(--text-dim);
+            margin-bottom: 30px;
+        }
+        
+        /* Options */
+        .options {
+            display: grid;
+            gap: 12px;
+        }
+        
+        .option {
+            background: var(--card);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+        
+        .option:hover {
+            border-color: var(--accent-dim);
+            transform: translateY(-2px);
+        }
+        
+        .option.selected {
+            border-color: var(--accent);
+            background: var(--accent-dim);
+        }
+        
+        .option-radio {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--text-dim);
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 12px;
+            vertical-align: middle;
+        }
+        
+        .option.selected .option-radio {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+        
+        .option-content {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        .option-title {
+            font-weight: 600;
+            display: block;
+        }
+        
+        .option-desc {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+        
+        /* Navigation */
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        
+        .btn {
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: #000;
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px var(--accent-dim);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--card);
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        /* Results */
+        .results {
+            display: none;
+        }
+        
+        .results.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        .result-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .result-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .result-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--accent-dim);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        
+        .result-title {
+            flex: 1;
+        }
+        
+        .result-title h3 {
+            font-size: 1.3rem;
+            margin-bottom: 4px;
+        }
+        
+        .result-title p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+        
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .result-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        .result-label {
+            color: var(--text-dim);
+        }
+        
+        .result-value {
+            font-weight: 600;
+            color: var(--accent);
+        }
+        
+        .result-value.highlight {
+            font-size: 1.2rem;
+        }
+        
+        /* Setup Bundle */
+        .bundle-box {
+            background: linear-gradient(135deg, rgba(74, 222, 128, 0.1) 0%, rgba(34, 197, 94, 0.05) 100%);
+            border: 2px solid var(--accent);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .bundle-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 16px 0;
+        }
+        
+        .bundle-savings {
+            color: var(--warning);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .affiliate-btn {
+            display: inline-block;
+            background: #FF9900;
+            color: #000;
+            text-decoration: none;
+            padding: 16px 40px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+        }
+        
+        .affiliate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 153, 0, 0.3);
+        }
+        
+        /* Email Capture */
+        .email-section {
+            background: linear-gradient(135deg, rgba(74, 222, 128, 0.05) 0%, rgba(34, 197, 94, 0.02) 100%);
+            border: 1px solid var(--accent-dim);
+            border-radius: 16px;
+            padding: 40px;
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+        .email-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+        
+        .email-section p {
+            color: var(--text-dim);
+            margin-bottom: 24px;
+        }
+        
+        .email-form {
+            display: flex;
+            gap: 12px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .email-form input {
+            flex: 1;
+            padding: 14px 20px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--card);
+            color: var(--text);
+            font-size: 1rem;
+        }
+        
+        .email-form input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        .email-form button {
+            padding: 14px 28px;
+            background: var(--accent);
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .email-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--accent-dim);
+        }
+        
+        /* Urgency Banner */
+        .urgency-banner {
+            background: var(--warning);
+            color: #000;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .urgency-banner span {
+            font-size: 1.5rem;
+        }
+        
+        .countdown {
+            font-family: monospace;
+            font-size: 1.1rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.7rem; }
+            .btn { padding: 12px 24px; }
+            .bundle-price { font-size: 2rem; }
+            .email-form { flex-direction: column; }
+        }
+        
+        /* Hidden */
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">Grow<span>Depot</span></div>
+            <h1>Grow Setup Calculator</h1>
+            <p class="subtitle">Find your perfect tent, light, and complete setup in 60 seconds</p>
+        </div>
+        
+        <!-- Progress Bar -->
+        <div class="progress-container" id="progressContainer">
+            <div class="progress-header">
+                <span class="progress-step active" id="step1">Plants</span>
+                <span class="progress-step" id="step2">Budget</span>
+                <span class="progress-step" id="step3">Space</span>
+                <span class="progress-step" id="step4">Setup</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 25%"></div>
+            </div>
+        </div>
+        
+        <!-- Question 1: Plants -->
+        <div class="question active" id="q1">
+            <h2>How many plants do you want to grow?</h2>
+            <p class="question-desc">This determines your tent size and light requirements</p>
+            
+            <div class="options">
+                <div class="option" onclick="selectOption('plants', 1)">
+                    <span class="option-radio"></span>
+                    <div class="option-content">
+                        <span class="option-title">1-2 Plants</span>
+                        <span class="option-desc">Personal use, small harvests</span>
+                    </div>
+                </div>
+                <div class="option" onclick="selectOption('plants', 2)">
+                    <span class="option-radio"></span>
+                    <div class="option-content">
+                        <span class="option-title">3-4 Plants</span>
+                        <span class="option-desc">Medium setup, regular harvests</span>
+                    </div>
+                </div>
+                <div class="option" onclick="selectOption('plants', 3)">
+                    <span class="option-radio"></span>
+                    <div class="option-content">
+                        <span class="option-title">5+ Plants</span>
+                        <span class="option-desc">Large setup, heavy yield</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="nav-buttons">
+                <div></div>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="next1" disabled>Next →</button>
+            </div>
+        </div>
+        
+        <!-- Question 2: Budget -->
+        <div class="question" id="q2">
+            <h2>What's your budget?</h2>
+            <p class="question-desc">Complete setup including tent, light, ventilation, and nutrients</p>
+            
+            <div class="options">
+                <div class="option" onclick="selectOption('budget', 'budget')">
+                    <span class="option-radio"></span>
+                    <div class="option-content">
+                        <span class="option-title">Budget-Friendly ($300-500)</span>
+                        <span class="option-desc">Entry-level gear that works</span>
+                    </div>
+                </div>
+                <div class="option" onclick="selectOption('budget', 'mid')">
+                    <span class="option-radio"></span>
+                    <div class="option-content">
+                        <span class="option-title">Mid-Range ($500-800)</span>
+                        <span class="option-desc">Quality gear with better efficiency</span>
+                    </div>
+                </div>
+                <div class="option" onclick="selectOption('budget', 'premium')">
+                    <span class="option-radio"></span>
+                    <div class="option-content">
+                        <span class="option-title">Premium ($800+)</span>
+                        <span class="option-desc">Best-in-class, maximum yields</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="prevQuestion()">← Back</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="next2" disabled>Next →</button>
+            </div>
+        </div>
+        
+        <!-- Question 3: Space -->
+        <div class="question" id="q3">
+            <h2>How much space do you have?</h2>
+            <p class="question-desc">Tent dimensions for your grow area</p>
+            
+            <div class="options">
+                <div class="option" onclick="selectOption('space', '2x2')">
+                    <span class="option-radio"></span>
+                    <div class="option-content">
+                        <span class="option-title">2' x 2' (60cm x 60cm)</span>
+                        <span class="option-desc">Small closet, minimal space</span>
+                    </div>
+                </div>
+                <div class="option" onclick="selectOption('space', '2x4')">
+                    <span class="option-radio"></span>
+                    <div class="option-content">
+                        <span class="option-title">2' x 4' (60cm x 120cm)</span>
+                        <span class="option-desc">Small room corner, single light</span>
+                    </div>
+                </div>
+                <div class="option" onclick="selectOption('space', '3x3')">
+                    <span class="option-radio"></span>
+                    <div class="option-content">
+                        <span class="option-title">3' x 3' (90cm x 90cm)</span>
+                        <span class="option-desc">Standard tent, ideal for 2-4 plants</span>
+                    </div>
+                </div>
+                <div class="option" onclick="selectOption('space', '4x4')">
+                    <span class="option-radio"></span>
+                    <div class="option-content">
+                        <span class="option-title">4' x 4' (120cm x 120cm)</span>
+                        <span class="option-desc">Large grow, maximum yield</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="prevQuestion()">← Back</button>
+                <button class="btn btn-primary" onclick="calculateResults()" id="calcBtn" disabled>Calculate My Setup →</button>
+            </div>
+        </div>
+        
+        <!-- Results Section -->
+        <div class="results" id="results">
+            <div class="urgency-banner">
+                <span>⏰</span>
+                <span>Winter growing season ends in <span class="countdown" id="daysLeft">45</span> days</span>
+            </div>
+            
+            <div class="result-card">
+                <div class="result-header">
+                    <div class="result-icon">⛺</div>
+                    <div class="result-title">
+                        <h3>Your Perfect Tent</h3>
+                        <p>Based on <span id="plantCount">4 plants</span> and <span id="spaceSize">2' x 4'</span> space</p>
+                    </div>
+                </div>
+                <div class="result-row">
+                    <span class="result-label">Recommended Size</span>
+                    <span class="result-value highlight" id="tentSize">2' x 4' x 5' (60x120x150cm)</span>
+                </div>
+                <div class="result-row">
+                    <span class="result-label">Plant Capacity</span>
+                    <span class="result-value" id="tentCapacity">2-4 plants</span>
+                </div>
+                <div class="result-row">
+                    <span class="result-label">Why This Size?</span>
+                    <span class="result-value" id="tentWhy">Perfect for your space with room to maneuver</span>
+                </div>
+            </div>
+            
+            <div class="result-card">
+                <div class="result-header">
+                    <div class="result-icon">💡</div>
+                    <div class="result-title">
+                        <h3>Required Light Power</h3>
+                        <p>LED wattage needed for full coverage</p>
+                    </div>
+                </div>
+                <div class="result-row">
+                    <span class="result-label">Minimum Wattage</span>
+                    <span class="result-value highlight" id="lightWatts">200W</span>
+                </div>
+                <div class="result-row">
+                    <span class="result-label">Coverage Area</span>
+                    <span class="result-value" id="lightCoverage">2' x 4' (0.8m²)</span>
+                </div>
+                <div class="result-row">
+                    <span class="result-label">Daily Power Cost</span>
+                    <span class="result-value" id="powerCost">~$0.80/day (@$0.12/kWh)</span>
+                </div>
+            </div>
+            
+            <div class="bundle-box">
+                <h3>🔥 Complete Setup Bundle</h3>
+                <p style="color: var(--text-dim); margin: 8px 0;">Everything you need + Prime shipping</p>
+                <div class="bundle-price" id="totalCost">$547 CAD</div>
+                <div class="bundle-savings" id="bundleSavings">Save 12% vs buying separately</div>
+                <a href="#" class="affiliate-btn" id="amazonLink" target="_blank" onclick="trackBundleClick()">
+                    🛒 View Kit on Amazon
+                </a>
+                <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 16px;">
+                    Affiliate links • Amazon Prime eligible
+                </p>
+            </div>
+            
+            <div class="result-card">
+                <div class="result-header">
+                    <div class="result-icon">📋</div>
+                    <div class="result-title">
+                        <h3>Full Shopping List</h3>
+                        <p>Individual items if you prefer</p>
+                    </div>
+                </div>
+                <div id="shoppingList">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+            
+            <!-- Email Capture -->
+            <div class="email-section">
+                <h3>📧 Get This Setup Sent to Your Inbox</h3>
+                <p>Plus: 10% off coupon, growing calendar, and weekly tips</p>
+                <div class="email-form">
+                    <input type="email" id="emailInput" placeholder="your@email.com" required>
+                    <button onclick="submitEmail()">Send My Setup</button>
+                </div>
+                <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 16px;">
+                    No spam. Unsubscribe anytime. 2,400+ subscribers.
+                </p>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <button class="btn btn-secondary" onclick="resetCalculator()">← Start Over</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // State
+        let currentQuestion = 1;
+        const answers = {};
+        
+        // Product Database
+        const products = {
+            tents: {
+                '2x2': { name: '2x2x4\' (60x60x120cm)', price: 89, capacity: '1-2 plants' },
+                '2x4': { name: '2x4x5\' (60x120x150cm)', price: 129, capacity: '2-4 plants' },
+                '3x3': { name: '3x3x6\' (90x90x180cm)', price: 159, capacity: '2-4 plants' },
+                '4x4': { name: '4x4x7\' (120x120x200cm)', price: 229, capacity: '4-6 plants' }
+            },
+            lights: {
+                '2x2': { budget: { name: '100W LED Board', price: 89, watts: 100 }, mid: { name: '150W Samsung LM301B', price: 149, watts: 150 }, premium: { name: '200W Quantum Board', price: 249, watts: 200 } },
+                '2x4': { budget: { name: '200W LED Panel', price: 139, watts: 200 }, mid: { name: '240W Samsung LM301B', price: 199, watts: 240 }, premium: { name: '300W Quantum Board + UV/IR', price: 349, watts: 300 } },
+                '3x3': { budget: { name: '150W LED', price: 109, watts: 150 }, mid: { name: '240W Samsung LM301B', price: 229, watts: 240 }, premium: { name: '320W Quantum Board', price: 399, watts: 320 } },
+                '4x4': { budget: { name: '300W LED', price: 179, watts: 300 }, mid: { name: '480W Bar Light', price: 399, watts: 480 }, premium: { name: '600W Full Spectrum + Controller', price: 699, watts: 600 } }
+            },
+            essentials: {
+                ventilation: { name: 'Inline Fan + Carbon Filter', price: 89 },
+                pots: { name: 'Fabric Pots (5-pack)', price: 25 },
+                nutrients: { name: 'Nutrient Starter Kit', price: 45 },
+                soil: { name: 'Premium Soil (2 bags)', price: 35 },
+                ph: { name: 'pH Kit', price: 20 },
+                timer: { name: 'Timer + Accessories', price: 25 }
+            }
+        };
+        
+        // Amazon Affiliate Links (placeholder - replace with real ones)
+        const affiliateLinks = {
+            '2x2_budget': 'https://amazon.ca/s?k=grow+tent+2x2+led+kit',
+            '2x2_mid': 'https://amazon.ca/s?k=grow+tent+2x2+samsung+lm301b',
+            '2x4_budget': 'https://amazon.ca/s?k=grow+tent+2x4+led+kit',
+            '2x4_mid': 'https://amazon.ca/s?k=spider+farmer+2x4+kit',
+            '3x3_budget': 'https://amazon.ca/s?k=grow+tent+3x3+kit',
+            '3x3_mid': 'https://amazon.ca/s?k=mars+hydro+3x3+kit', 
+            '4x4_budget': 'https://amazon.ca/s?k=grow+tent+4x4+kit',
+            '4x4_mid': 'https://amazon.ca/s?k=spider+farmer+4x4+kit'
+        };
+        
+        // Calculate days left in winter growing season (March 21)
+        function updateCountdown() {
+            const now = new Date();
+            const spring = new Date(now.getFullYear(), 2, 21); // March 21
+            if (now > spring) spring.setFullYear(spring.getFullYear() + 1);
+            const daysLeft = Math.ceil((spring - now) / (1000 * 60 * 60 * 24));
+            document.getElementById('daysLeft').textContent = daysLeft;
+        }
+        
+        updateCountdown();
+        
+        function selectOption(category, value) {
+            answers[category] = value;
+            
+            // Update UI
+            const question = document.getElementById(`q${currentQuestion}`);
+            question.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+            
+            // Enable next button
+            document.getElementById(`next${currentQuestion}`)?.removeAttribute('disabled');
+            if (currentQuestion === 3) {
+                document.getElementById('calcBtn')?.removeAttribute('disabled');
+            }
+        }
+        
+        function nextQuestion() {
+            if (currentQuestion < 3) {
+                document.getElementById(`q${currentQuestion}`).classList.remove('active');
+                currentQuestion++;
+                document.getElementById(`q${currentQuestion}`).classList.add('active');
+                updateProgress();
+            }
+        }
+        
+        function prevQuestion() {
+            if (currentQuestion > 1) {
+                document.getElementById(`q${currentQuestion}`).classList.remove('active');
+                currentQuestion--;
+                document.getElementById(`q${currentQuestion}`).classList.add('active');
+                updateProgress();
+            }
+        }
+        
+        function updateProgress() {
+            const progress = (currentQuestion / 4) * 100;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+            
+            document.querySelectorAll('.progress-step').forEach((step, i) => {
+                if (i < currentQuestion) step.classList.add('active');
+            });
+        }
+        
+        function calculateResults() {
+            const space = answers.space;
+            const budget = answers.budget;
+            const plants = answers.plants;
+            
+            // Get products
+            const tent = products.tents[space];
+            const light = products.lights[space][budget];
+            
+            // Calculate total
+            let total = tent.price + light.price;
+            const essentialsList = [];
+            
+            // Add essentials based on setup
+            total += products.essentials.ventilation.price;
+            essentialsList.push(products.essentials.ventilation);
+            
+            total += products.essentials.pots.price;
+            essentialsList.push(products.essentials.pots);
+            
+            total += products.essentials.nutrients.price;
+            essentialsList.push(products.essentials.nutrients);
+            
+            total += products.essentials.soil.price;
+            essentialsList.push(products.essentials.soil);
+            
+            total += products.essentials.ph.price;
+            essentialsList.push(products.essentials.ph);
+            
+            total += products.essentials.timer.price;
+            essentialsList.push(products.essentials.timer);
+            
+            // Update results
+            document.getElementById('tentSize').textContent = tent.name;
+            document.getElementById('tentCapacity').textContent = tent.capacity;
+            document.getElementById('lightWatts').textContent = `${light.watts}W ${light.name}`;
+            document.getElementById('totalCost').textContent = `$${total} CAD`;
+            document.getElementById('plantCount').textContent = 
+                plants === 1 ? '1-2 plants' : plants === 2 ? '3-4 plants' : '5+ plants';
+            document.getElementById('spaceSize').textContent = 
+                space === '2x2' ? "2' x 2'" : space === '2x4' ? "2' x 4'" : space === '3x3' ? "3' x 3'" : "4' x 4'";
+            
+            // Power cost calculation
+            const dailyKwh = (light.watts * 18) / 1000; // 18 hours on
+            const dailyCost = dailyKwh * 0.12; // $0.12/kWh
+            document.getElementById('powerCost').textContent = `~$${dailyCost.toFixed(2)}/day (@$0.12/kWh)`;
+            
+            // Build shopping list
+            const shoppingList = document.getElementById('shoppingList');
+            shoppingList.innerHTML = '';
+            
+            const items = [
+                { label: 'Grow Tent', value: tent.name, price: `$${tent.price}` },
+                { label: 'LED Grow Light', value: light.name, price: `$${light.price}` },
+                ...essentialsList.map(e => ({ label: e.name, value: 'Amazon Prime', price: `$${e.price}` }))
+            ];
+            
+            items.forEach(item => {
+                const row = document.createElement('div');
+                row.className = 'result-row';
+                row.innerHTML = `
+                    <span>${item.label}<br><small style="color: var(--text-dim)">${item.value}</small></span>
+                    <span class="result-value">${item.price}</span>
+                `;
+                shoppingList.appendChild(row);
+            });
+            
+            // Affiliate link
+            const linkKey = `${space}_${budget}`;
+            document.getElementById('amazonLink').href = affiliateLinks[linkKey] || affiliateLinks['3x3_mid'];
+            
+            // Show results, hide questions
+            document.getElementById('progressContainer').style.display = 'none';
+            document.getElementById('q3').classList.remove('active');
+            document.getElementById('results').classList.add('active');
+            
+            // Track
+            gtag('event', 'calculator_complete', {
+                'space': space,
+                'budget': budget,
+                'total_cost': total
+            });
+        }
+        
+        function trackBundleClick() {
+            gtag('event', 'affiliate_click', {
+                'product': 'grow_kit_bundle',
+                'category': 'calculator_result'
+            });
+        }
+        
+        function submitEmail() {
+            const email = document.getElementById('emailInput').value;
+            if (!email || !email.includes('@')) {
+                alert('Please enter a valid email');
+                return;
+            }
+            
+            // Store locally (in real app, send to API)
+            const leads = JSON.parse(localStorage.getItem('growdepot_leads') || '[]');
+            leads.push({
+                email: email,
+                space: answers.space,
+                budget: answers.budget,
+                timestamp: new Date().toISOString()
+            });
+            localStorage.setItem('growdepot_leads', JSON.stringify(leads));
+            
+            // Show success
+            document.querySelector('.email-section').innerHTML = `
+                <h3>✅ Setup Sent!</h3>
+                <p>Check your inbox (and spam folder) for your complete kit list.</p>
+                <p style="color: var(--accent); margin-top: 16px;">Your 10% off coupon is on the way!</p>
+            `;
+            
+            gtag('event', 'email_capture', { 'source': 'calculator' });
+        }
+        
+        function resetCalculator() {
+            currentQuestion = 1;
+            Object.keys(answers).forEach(key => delete answers[key]);
+            
+            document.getElementById('results').classList.remove('active');
+            document.getElementById('progressContainer').style.display = 'block';
+            document.getElementById('q1').classList.add('active');
+            
+            document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+            document.querySelectorAll('button[id^="next"]').forEach(btn => btn.disabled = true);
+            document.getElementById('calcBtn').disabled = true;
+            
+            updateProgress();
+        }
+    </script>
+</body>
+</html>
