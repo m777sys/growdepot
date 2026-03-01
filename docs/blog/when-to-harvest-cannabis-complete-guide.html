@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>When to Harvest Cannabis: The Complete Visual Guide | GrowDepot</title>
+    <meta name="description" content="Learn exactly when to harvest cannabis for maximum potency. Visual trichome guide, harvest windows for different effects, and essential tools for Canadian growers.">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg: #0a0a0a;
+            --card: #131313;
+            --border: #1e1e1e;
+            --text: #e0e0e0;
+            --text-dim: #888;
+            --accent: #4ade80;
+            --accent-dim: #4ade8033;
+            --warning: #fbbf24;
+            --info: #60a5fa;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+        
+        .header {
+            background: linear-gradient(180deg, #1a1a1a 0%, var(--bg) 100%);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+        }
+        
+        .logo span { color: var(--accent); }
+        
+        .tagline {
+            color: var(--text-dim);
+            font-size: 1rem;
+        }
+        
+        .nav {
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav a {
+            color: var(--text);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.9rem;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        
+        .nav a:hover {
+            background: var(--accent-dim);
+            color: var(--accent);
+        }
+        
+        .nav a.active {
+            background: var(--accent);
+            color: #000;
+            font-weight: 600;
+        }
+        
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+        
+        .hero .meta {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+        
+        .intro-box {
+            background: linear-gradient(135deg, var(--accent-dim) 0%, transparent 100%);
+            border: 1px solid var(--accent);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 48px;
+        }
+        
+        .intro-box p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin: 0;
+        }
+        
+        h2 {
+            font-size: 1.6rem;
+            margin: 48px 0 24px;
+            color: var(--accent);
+        }
+        
+        h3 {
+            font-size: 1.2rem;
+            margin: 32px 0 16px;
+            color: var(--text);
+        }
+        
+        p {
+            margin-bottom: 20px;
+            color: var(--text-dim);
+            font-size: 1.05rem;
+        }
+        
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin: 32px 0;
+        }
+        
+        .timeline-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -1px;
+            top: 24px;
+            bottom: -48px;
+            width: 2px;
+            background: var(--border);
+        }
+        
+        .timeline-item:last-child::before { display: none; }
+        
+        .timeline-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .badge-clear { background: #3b82f633; color: #60a5fa; }
+        .badge-milky { background: var(--accent-dim); color: var(--accent); }
+        .badge-amber { background: #fbbf2433; color: var(--warning); }
+        
+        .timeline-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        
+        .timeline-item p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        
+        .effect-box {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .effect-box h4 {
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+        
+        .effect-box p { margin: 0; }
+        
+        .product-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        
+        .product-icon {
+            font-size: 2.5rem;
+            flex-shrink: 0;
+        }
+        
+        .product-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        
+        .product-info p {
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+        }
+        
+        .product-link {
+            display: inline-block;
+            background: var(--accent);
+            color: #000;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .product-link:hover {
+            opacity: 0.9;
+        }
+        
+        .checklist {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+        
+        .checklist h4 {
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+        }
+        
+        .checklist ul {
+            list-style: none;
+        }
+        
+        .checklist li {
+            padding: 8px 0;
+            padding-left: 28px;
+            position: relative;
+            color: var(--text-dim);
+        }
+        
+        .checklist li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--accent-dim) 0%, transparent 100%);
+            border: 2px solid var(--accent);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            margin: 48px 0;
+        }
+        
+        .cta-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+        }
+        
+        .cta-section p {
+            margin-bottom: 24px;
+            font-size: 1.05rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: #000;
+            text-decoration: none;
+            padding: 14px 32px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        
+        footer {
+            background: var(--card);
+            border-top: 1px solid var(--border);
+            padding: 40px 20px;
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.3rem; }
+            .product-card { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">Grow<span>Depot</span></div>
+        <p class="tagline">Premium equipment for home growers</p>
+    </header>
+    
+    <nav class="nav">
+        <a href="./">← Blog</a>
+        <a href="../">🏠 Home</a>
+        <a href="grow-calculator.html">🧮 Calculator</a>
+        <a href="../#grow-lights">💡 Lights</a>
+        <a href="../#grow-tents">⛺ Tents</a>
+    </nav>
+    
+    <main>
+        <div class="hero">
+            <h1>When to Harvest Cannabis:<br>The Complete Visual Guide</h1>
+            <p class="meta">March 2026 • 8 min read • Harvest Timing</p>
+        </div>
+        
+        <div class="intro-box">
+            <p><strong>Harvest too early</strong> = weak, anxious high.<br>
+            <strong>Harvest too late</strong> = couch-lock, lost potency.<br>
+            <strong>Harvest just right</strong> = the effect you actually wanted.</p>
+        </div>
+        
+        <p>After 12+ weeks of growing, the harvest window is narrow — sometimes just 7-10 days. Miss it and you've wasted months. This guide shows you exactly what to look for, when to chop, and how to dial in your harvest for the effect you want.</p>
+        
+        <h2>🧬 The Science: Trichomes Explained</h2>
+        
+        <p>Trichomes are tiny resin glands on your buds. They look like mushroom-shaped crystals under magnification. These glands contain THC, CBD, and terpenes — everything that makes your cannabis potent.</p>
+        
+        <p>As your plant matures, trichomes go through three distinct stages. Each stage produces different effects:</p>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <span class="timeline-badge badge-clear">TOO EARLY</span>
+                <h4>Clear Trichomes</h4>
+                <p>Glassy, transparent heads. THC is still developing. Harvest now and you'll get a weak, racy high that can cause anxiety. <strong>Wait longer.</strong></p>
+            </div>
+            
+            <div class="timeline-item">
+                <span class="timeline-badge badge-milky">PEAK THC</span>
+                <h4>Cloudy/Milky Trichomes</h4>
+                <p>Opaque, milky white heads. THC is at maximum potency. This is when most growers harvest for a balanced, euphoric high. <strong>Sweet spot for most strains.</strong></p>
+            </div>
+            
+            <div class="timeline-item">
+                <span class="timeline-badge badge-amber">MAX RELAXATION</span>
+                <h4>Amber Trichomes</h4>
+                <p>Golden/brown heads. THC is converting to CBN — more sedating, less psychoactive. Harvest here for sleep, pain relief, or heavy relaxation. <strong>Couch-lock territory.</strong></p>
+            </div>
+        </div>
+        
+        <h2>🎯 Choose Your Effect</h2>
+        
+        <div class="effect-box">
+            <h4>⚡ Energetic/Creative (Sativa-dominant)</h4>
+            <p>Harvest when trichomes are <strong>90% cloudy, 10% clear</strong>. Slight amber means you've gone too far. Best for daytime, social situations, creative work.</p>
+        </div>
+        
+        <div class="effect-box">
+            <h4>🌿 Balanced (Hybrid)</h4>
+            <p>Harvest when trichomes are <strong>70-80% cloudy, 20-30% amber</strong>. The goldilocks zone. Good for evening relaxation without full sedation.</p>
+        </div>
+        
+        <div class="effect-box">
+            <h4>😴 Sleepy/Body High (Indica-dominant)</h4>
+            <p>Harvest when trichomes are <strong>50% cloudy, 50% amber</strong>. Maximum CBN conversion. Perfect for insomnia, pain, or "turn off my brain" evenings.</p>
+        </div>
+        
+        <h2>🔍 Essential Tools</h2>
+        
+        <p>You cannot see trichomes with the naked eye. You need magnification. Here are your options:</p>
+        
+        <div class="product-card">
+            <div class="product-icon">🔬</div>
+            <div class="product-info">
+                <h4>60x-100x Jewelers Loupe</h4>
+                <p>The classic choice. Small, portable, no batteries. 60x is minimum; 100x is ideal. Look for one with built-in LED light — trichomes are tiny and need illumination.</p>
+                <a href="https://www.amazon.ca/s?k=jewelers+loupe+60x+100x+led+ cannabis&amp;tag=cannacompare2-20" class="product-link" onclick="trackAffiliateClick()">Shop Loupes on Amazon →</a>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="product-icon">📱</div>
+            <div class="product-info">
+                <h4>USB Digital Microscope</h4>
+                <p>Plugs into your phone or laptop. 1000x magnification lets you see trichome structure in detail. Great for learning, documenting, or sharing photos. Around $30-50.</p>
+                <a href="https://www.amazon.ca/s?k=usb+digital+microscope+1000x&amp;tag=cannacompare2-20" class="product-link" onclick="trackAffiliateClick()">Shop USB Microscopes →</a>
+            </div>
+        </div>
+        
+        <div class="product-card">
+            <div class="product-icon">📸</div>
+            <div class="product-info">
+                <h4>Phone Macro Lens</h4>
+                <p>Clip-on lens that turns your phone camera into a microscope. Convenient if you don't want separate gear. Quality varies — read reviews for cannabis use.</p>
+                <a href="https://www.amazon.ca/s?k=phone+macro+lens+cannabis+trichomes&amp;tag=cannacompare2-20" class="product-link" onclick="trackAffiliateClick()">Shop Macro Lenses →</a>
+            </div>
+        </div>
+        
+        <h2>✅ Harvest Checklist</h2>
+        
+        <div class="checklist">
+            <h4>Before You Chop</h4>
+            <ul>
+                <li>Check trichomes on upper buds (not lower larf)</li>
+                <li>Look at multiple buds — they mature at different rates</li>
+                <li>Check in the morning after lights on (trichomes change during day)</li>
+                <li>Flush plants with plain water for 7-14 days before harvest</li>
+                <li>Stop all nutrients — you want clean smoke</li>
+                <li>Prepare drying space (60°F, 60% humidity ideal)</li>
+                <li>Have jars ready for curing (wide mouth mason jars work best)</li>
+            </ul>
+        </div>
+        
+        <h2>⏰ Timeline: When to Start Checking</h2>
+        
+        <p><strong>Week 6-8 of flower:</strong> Start checking trichomes weekly. Most strains go 8-10 weeks, but genetics vary wildly.</p>
+        
+        <p><strong>Week 8+:</strong> Check daily once you see first signs of cloudiness. The window from "ready" to "too late" can be just 7 days.</p>
+        
+        <p><strong>Pistil method (backup):</strong> When 70-80% of white hairs (pistils) have turned orange and curled in, you're in the harvest window. But trichomes tell the full story — pistils can turn early due to stress.</p>
+        
+        <div class="cta-section">
+            <h3>🧮 Plan Your Entire Grow</h3>
+            <p>Don't just guess on harvest timing. Use our grow calculator to plan light schedules, nutrient timing, and drying from seed to cure.</p>
+            <a href="grow-calculator.html" class="cta-button">Open Grow Calculator →</a>
+        </div>
+        
+        <h2>💡 Pro Tips</h2>
+        
+        <p><strong>Staggered Harvest:</strong> Top colas finish first. You can harvest tops, let lowers go another week. Two harvests from one plant.</p>
+        
+        <p><strong>Document Everything:</strong> Take daily trichome photos once you hit week 8. You'll learn your strains' specific timing.</p>
+        
+        <p><strong>Don't Trust the Breeder Timeline:</strong> Seed packs say "8 weeks flowering." Reality is often 9-11 weeks. Trust the plant, not the package.</p>
+        
+        <p><strong>Dark Period Before Harvest:</strong> Some growers give 24-48 hours of darkness before chop. The science is debated, but it's common practice.</p>
+        
+        <p><strong>Room Temperature Matters:</strong> High temps (above 75°F) can degrade THC during late flower. Keep it cool in final weeks.</p>
+        
+    </main>
+    
+    <footer>
+        <p>© 2026 GrowDepot • <a href="../">Back to GrowDepot</a> • Affiliate links support our guides</p>
+    </footer>
+    
+    <script>
+        function trackAffiliateClick() {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'click', {
+                    'event_category': 'affiliate',
+                    'event_label': 'Amazon Product Link'
+                });
+            }
+        }
+    </script>
+</body>
+</html>
