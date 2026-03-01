@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cannabis Grow Equipment Canada | Buy Weed Growing Supplies Online | GrowDepot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>GrowDepot Canada — Grow Equipment & Supplies</title>
     
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-E20VJQJG27"></script>
@@ -11,723 +11,426 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-E20VJQJG27'); // Replace with your GA4 ID
-        
-        // Track affiliate link clicks
+        gtag('config', 'G-E20VJQJG27');
         function trackAffiliateClick(product, price) {
-            gtag('event', 'affiliate_click', {
-                'product_name': product,
-                'product_price': price,
-                'currency': 'CAD'
-            });
+            gtag('event', 'affiliate_click', {'product_name': product, 'product_price': price, 'currency': 'CAD'});
         }
     </script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         :root {
             --bg: #0a0a0a;
             --card: #131313;
             --border: #1e1e1e;
             --text: #e0e0e0;
-            --text-dim: #666;
+            --text-dim: #888;
             --accent: #4ade80;
-            --accent-dim: #4ade8033;
-            --warning: #fbbf24;
+            --accent-dim: #4ade8022;
         }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-
-        .header {
-            background: linear-gradient(180deg, #1a1a1a 0%, var(--bg) 100%);
-            padding: 40px 20px;
-            text-align: center;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); line-height: 1.4; }
+        
+        /* TOP BAR - Fixed, minimal */
+        .topbar {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: rgba(10,10,10,0.95); backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
+            padding: 10px 16px;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 100;
         }
-
-        .logo {
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: -1px;
-            margin-bottom: 8px;
+        .logo { font-size: 1.1rem; font-weight: 700; }
+        .logo span { color: var(--accent); }
+        .region { font-size: 0.65rem; background: linear-gradient(135deg, #d00, #fff, #d00); color: #000; padding: 2px 8px; border-radius: 10px; font-weight: 700; text-transform: uppercase; }
+        
+        /* MAIN CONTENT */
+        .container { padding: 60px 12px 100px; }
+        
+        /* HERO - Above the fold */
+        .hero {
+            text-align: center; padding: 16px 0 20px;
         }
-
-        .logo span {
-            color: var(--accent);
+        .hero h1 { font-size: 1.4rem; font-weight: 600; margin-bottom: 6px; }
+        .hero p { color: var(--text-dim); font-size: 0.85rem; }
+        
+        /* QUICK CATEGORIES - Horizontal scroll */
+        .quick-nav {
+            display: flex; gap: 8px; overflow-x: auto;
+            padding: 0 4px 12px; -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
         }
-
-        .tagline {
-            color: var(--text-dim);
-            font-size: 1rem;
+        .quick-nav::-webkit-scrollbar { display: none; }
+        .quick-nav a {
+            flex-shrink: 0; background: var(--card); border: 1px solid var(--border);
+            padding: 8px 14px; border-radius: 20px; font-size: 0.8rem;
+            color: var(--text); text-decoration: none; white-space: nowrap;
         }
-
-        .region-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #ff0000 0%, #fff 50%, #ff0000 100%);
-            color: #000;
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 6px 16px;
-            border-radius: 20px;
-            margin-top: 16px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .quick-nav a:hover, .quick-nav a:focus { background: var(--accent-dim); border-color: var(--accent); }
+        .quick-nav a.blog { background: var(--accent); color: #000; font-weight: 600; }
+        
+        /* CALCULATOR CTA - Compact */
+        .calc-cta {
+            background: var(--card); border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+            border-radius: 10px; padding: 14px 16px;
+            margin: 8px 0 20px;
         }
-
-        .nav {
-            background: var(--card);
-            border-bottom: 1px solid var(--border);
-            padding: 16px 20px;
-            text-align: center;
+        .calc-cta h3 { font-size: 0.95rem; margin-bottom: 4px; }
+        .calc-cta p { color: var(--text-dim); font-size: 0.8rem; margin-bottom: 10px; }
+        .calc-cta a {
+            display: inline-block; background: var(--accent); color: #000;
+            text-decoration: none; padding: 8px 16px; border-radius: 6px;
+            font-weight: 600; font-size: 0.85rem;
         }
-
-        .nav a {
-            color: var(--text);
-            text-decoration: none;
-            margin: 0 20px;
-            font-size: 0.9rem;
-            padding: 8px 16px;
-            border-radius: 8px;
-            transition: all 0.2s;
+        
+        /* SECTIONS */
+        .section { margin-bottom: 24px; }
+        .section-title {
+            font-size: 0.9rem; font-weight: 600;
+            padding: 10px 4px; border-bottom: 1px solid var(--border);
+            margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
         }
-
-        .nav a:hover {
-            background: var(--accent-dim);
-            color: var(--accent);
-        }
-
-        .nav a.blog-link {
-            background: var(--accent);
-            color: #000;
-            font-weight: 600;
-        }
-
-        .nav a.blog-link:hover {
-            opacity: 0.9;
-        }
-
-        .affiliate-notice {
-            background: var(--card);
-            border: 1px solid var(--border);
-            padding: 16px 20px;
-            text-align: center;
-            font-size: 0.85rem;
-            color: var(--text-dim);
-        }
-
-        .affiliate-notice a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        .intro {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-
-        .intro h2 {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-        }
-
-        .intro p {
-            color: var(--text-dim);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .category {
-            margin-bottom: 48px;
-        }
-
-        .category-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
+        
+        /* PRODUCTS - Compact cards */
         .product-card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
-            transition: border-color 0.2s, transform 0.2s;
+            background: var(--card); border: 1px solid var(--border);
+            border-radius: 10px; padding: 14px 16px;
+            display: flex; gap: 12px; align-items: center;
+            margin-bottom: 10px;
         }
-
-        .product-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-2px);
+        .product-icon { font-size: 2rem; flex-shrink: 0; }
+        .product-info { flex: 1; min-width: 0; }
+        .product-name { font-size: 0.95rem; font-weight: 600; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .product-desc { font-size: 0.75rem; color: var(--text-dim); margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .product-bottom { display: flex; align-items: center; gap: 10px; }
+        .product-price { font-size: 1.1rem; font-weight: 700; color: var(--accent); }
+        .product-btn {
+            font-size: 0.75rem; background: var(--accent-dim); color: var(--accent);
+            padding: 4px 10px; border-radius: 4px; text-decoration: none; font-weight: 500;
         }
-
-        .product-image {
-            width: 100%;
-            height: 200px;
-            background: var(--bg);
-            border-radius: 8px;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-dim);
-            font-size: 3rem;
+        .featured { border-color: var(--accent); position: relative; }
+        .featured::before {
+            content: "★"; position: absolute; top: -1px; right: 8px;
+            background: var(--accent); color: #000; font-size: 0.65rem;
+            padding: 2px 8px; border-radius: 0 0 4px 4px;
         }
-
-        .product-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            line-height: 1.3;
+        
+        /* HORIZONTAL PRODUCT SCROLL (for sections with many items) */
+        .scroll-section {
+            display: flex; gap: 10px; overflow-x: auto;
+            padding: 0 4px 12px; -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
         }
-
-        .product-desc {
-            color: var(--text-dim);
-            font-size: 0.9rem;
-            margin-bottom: 12px;
-            min-height: 40px;
+        .scroll-section::-webkit-scrollbar { display: none; }
+        .scroll-card {
+            flex-shrink: 0; width: 260px; background: var(--card);
+            border: 1px solid var(--border); border-radius: 10px;
+            padding: 14px;
         }
-
-        .product-price {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 12px;
+        .scroll-card .product-icon { margin-bottom: 8px; }
+        .scroll-card .product-name { white-space: normal; }
+        .scroll-card .product-desc { font-size: 0.75rem; margin: 6px 0; }
+        .scroll-card .product-price { display: block; margin-bottom: 8px; }
+        .scroll-card .btn {
+            display: block; text-align: center; background: var(--accent);
+            color: #000; text-decoration: none; padding: 10px;
+            border-radius: 6px; font-weight: 600; font-size: 0.85rem;
         }
-
-        .product-price .unit {
-            font-size: 0.9rem;
-            color: var(--text-dim);
-            font-weight: 400;
-        }
-
-        .commission {
-            background: var(--accent-dim);
-            color: var(--accent);
-            font-size: 0.75rem;
-            padding: 4px 8px;
-            border-radius: 4px;
-            display: inline-block;
-            margin-bottom: 16px;
-        }
-
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            background: var(--accent);
-            color: var(--bg);
-            text-decoration: none;
-            border-radius: 8px;
-            text-align: center;
-            font-weight: 600;
-            transition: background 0.2s;
-        }
-
-        .btn:hover {
-            background: #5eec8a;
-        }
-
-        .featured {
-            grid-column: span 2;
-            background: linear-gradient(135deg, var(--card) 0%, #1a2f1a 100%);
-            border: 1px solid var(--accent);
-        }
-
-        .featured-badge {
-            background: var(--accent);
-            color: var(--bg);
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 4px;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-            display: inline-block;
-        }
-
-        .why-section {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 32px;
-            margin-top: 48px;
-        }
-
-        .why-section h3 {
-            margin-bottom: 16px;
-            font-size: 1.25rem;
-        }
-
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin-top: 20px;
-        }
-
-        .why-item {
-            text-align: center;
-        }
-
-        .why-icon {
-            font-size: 2rem;
-            margin-bottom: 8px;
-        }
-
-        .why-item h4 {
-            font-size: 1rem;
-            margin-bottom: 4px;
-        }
-
-        .why-item p {
-            font-size: 0.85rem;
-            color: var(--text-dim);
-        }
-
-        .newsletter {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 48px 32px;
-            margin-top: 48px;
-            text-align: center;
-        }
-
-        .newsletter h3 {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-        }
-
-        .newsletter p {
-            color: var(--text-dim);
-            margin-bottom: 24px;
-        }
-
-        .newsletter form {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .newsletter input {
-            flex: 1;
-            padding: 14px 18px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            background: var(--card);
-            color: var(--text);
-            font-size: 1rem;
-        }
-
-        .newsletter input:focus {
-            outline: none;
-            border-color: var(--accent);
-        }
-
-        .btn-primary {
-            padding: 14px 28px;
-            background: var(--accent);
-            color: var(--bg);
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .btn-primary:hover {
-            background: #5eec8a;
-        }
-
-        .footer {
-            background: var(--card);
+        
+        /* WHY SECTION - Compact */
+        .why { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+        .why h3 { font-size: 0.95rem; margin-bottom: 12px; }
+        .why-grid { display: flex; gap: 12px; }
+        .why-item { flex: 1; text-align: center; font-size: 0.75rem; }
+        .why-icon { font-size: 1.5rem; margin-bottom: 4px; }
+        
+        /* STICKY CTA (bottom) */
+        .sticky-cta {
+            position: fixed; bottom: 0; left: 0; right: 0;
+            background: rgba(10,10,10,0.95); backdrop-filter: blur(10px);
             border-top: 1px solid var(--border);
-            padding: 40px 20px;
-            margin-top: 80px;
-            text-align: center;
+            padding: 12px 16px;
+            display: flex; gap: 10px;
+            z-index: 100;
         }
-
-        .footer p {
-            color: var(--text-dim);
-            font-size: 0.85rem;
-            margin-bottom: 8px;
+        .sticky-cta a {
+            flex: 1; background: var(--accent); color: #000;
+            text-align: center; padding: 12px; border-radius: 8px;
+            font-weight: 600; text-decoration: none; font-size: 0.9rem;
         }
-
-        .footer .disclosure {
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px solid var(--border);
-            font-size: 0.75rem;
-            opacity: 0.6;
+        .sticky-cta a.secondary {
+            background: var(--card); color: var(--text); border: 1px solid var(--border);
         }
-
-        @media (max-width: 768px) {
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .featured {
-                grid-column: span 1;
-            }
-            
-            .why-grid {
-                grid-template-columns: 1fr;
-            }
+        
+        /* AFFILIATE NOTICE - Compact */
+        .affiliate-note {
+            text-align: center; font-size: 0.7rem; color: var(--text-dim);
+            padding: 12px 16px; border-top: 1px solid var(--border);
+            margin-bottom: 60px;
+        }
+        .affiliate-note a { color: var(--accent); }
+        
+        /* DESKTOP ENHANCEMENTS */
+        @media (min-width: 768px) {
+            .container { max-width: 1100px; margin: 0 auto; padding: 70px 24px; }
+            .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+            .scroll-section { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; padding: 0; }
+            .scroll-card { width: auto; }
+            .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+            .sticky-cta { display: none; }
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <h1 class="logo">Grow<span>Depot</span></h1>
-        <p class="tagline">Premium equipment for home growers</p>
-        <div class="region-badge">🇨🇦 Amazon.ca • Prime Shipping • CAD Prices</div>
-    </header>
-
-    <div class="affiliate-notice">
-        🔗 This page contains Amazon.ca affiliate links. We earn a commission at no extra cost to you. 
-        <a href="#disclosure">Learn more</a>
+    <!-- Fixed Top Bar -->
+    <div class="topbar">
+        <div class="logo">Grow<span>Depot</span></div>
+        <span class="region">🇨🇦 Canada</span>
     </div>
 
-    <nav class="nav">
-        <a href="#grow-lights">💡 Grow Lights</a>
-        <a href="#grow-tents">⛺ Grow Tents</a>
-        <a href="#ventilation">🌬️ Ventilation</a>
-        <a href="#nutrients">🧪 Nutrients</a>
-        <a href="#vaporizers">💨 Vaporizers</a>
-        <a href="blog/" class="blog-link">📝 Blog</a>
-    </nav>
-
-    <main class="container">
-        <div class="intro">
-            <h2>Build Your Perfect Grow Setup</h2>
-            <p>Hand-picked equipment for Canadian home growers. Fast Prime shipping across Canada, prices in CAD.</p>
+    <div class="container">
+        <!-- Hero (Above Fold) -->
+        <div class="hero">
+            <h1>Build Your Grow Setup</h1>
+            <p>Hand-picked equipment for Canadian growers. Amazon.ca links, CAD prices, Prime shipping.</p>
         </div>
-
-        <!-- Calculator CTA -->
-        <div style="background: linear-gradient(135deg, rgba(74, 222, 128, 0.1) 0%, rgba(34, 197, 94, 0.05) 100%); border: 2px solid var(--accent); border-radius: 16px; padding: 32px; margin: 32px 0 48px; text-align: center;">
-            <div style="font-size: 2.5rem; margin-bottom: 12px;">🧮</div>
-            <h3 style="font-size: 1.4rem; margin-bottom: 8px;">Not sure what you need?</h3>
-            <p style="color: var(--text-dim); margin-bottom: 20px;">Answer 3 questions, get your complete kit list with exact tent size, LED wattage, and total cost.</p>
-            <a href="grow-calculator.html" style="display: inline-block; background: var(--accent); color: #000; text-decoration: none; padding: 16px 32px; border-radius: 8px; font-weight: 600; font-size: 1.1rem; transition: all 0.2s;">
-                🚀 Start Grow Calculator →
-            </a>
-            <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 16px;">Takes 60 seconds • Free • No signup required</p>
-        </div>
-
-        <!-- Grow Lights -->
-        <section class="category" id="grow-lights">
-            <h3 class="category-title">💡 Grow Lights</h3>
-            
-            <div class="products-grid">
-                <div class="product-card featured">
-                    <span class="featured-badge">Most Popular</span>
-                    <div class="product-image">💡</div>
-                    <div class="product-name">MARS HYDRO TSL2000 300W LED</div>
-                    <div class="product-desc">Full spectrum LED for 2×4ft coverage. Dimmable, energy efficient. Perfect for Canadian growers.</div>
-                    <div class="product-price">$269 CAD</div>
-                    <span class="commission">~$13 commission (4%)</span>
-                    <a href="https://www.amazon.ca/s?k=mars+hydro+tsl2000&tag=cannacompare2-20" class="btn" target="_blank" rel="nofollow sponsored" onclick="trackAffiliateClick('MARS HYDRO TSL2000', '269')">View on Amazon.ca →</a>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">💡</div>
-                    <div class="product-name">SPIDER FARMER SF1000</div>
-                    <div class="product-desc">Samsung LM301B LEDs, 2×2ft coverage. Great for beginners or small grows.</div>
-                    <div class="product-price">$159 CAD</div>
-                    <span class="commission">~$6-7 commission</span>
-                    <a href="https://www.amazon.ca/s?k=spider+farmer+sf1000&tag=cannacompare2-20" class="btn" target="_blank" rel="nofollow sponsored" onclick="trackAffiliateClick('SPIDER FARMER SF1000', '159')">View on Amazon.ca →</a>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">💡</div>
-                    <div class="product-name">VIPARSPECTRA P2000</div>
-                    <div class="product-desc">Budget-friendly full spectrum. Good for 2×4ft tents. Solid Canadian choice.</div>
-                    <div class="product-price">$189 CAD</div>
-                    <span class="commission">~$8 commission</span>
-                    <a href="https://www.amazon.ca/s?k=viparspectra+p2000&tag=cannacompare2-20" class="btn" target="_blank" rel="nofollow sponsored" onclick="trackAffiliateClick('VIPARSPECTRA P2000', '189')">View on Amazon.ca →</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Grow Tents -->
-        <section class="category" id="grow-tents">
-            <h3 class="category-title">⛺ Grow Tents</h3>
-            
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-image">⛺</div>
-                    <div class="product-name">VIVOSUN 2×4 Grow Tent</div>
-                    <div class="product-desc">48"×24"×60" - Fits 2-4 plants. Light-proof, durable frame. Great starter tent.</div>
-                    <div class="product-price">$149 CAD</div>
-                    <span class="commission">~$6 commission</span>
-                    <a href="https://www.amazon.ca/s?k=vivosun+2x4+grow+tent&tag=cannacompare2-20" class="btn" target="_blank" rel="nofollow sponsored" onclick="trackAffiliateClick('VIVOSUN 2x4 Grow Tent', '149')">View on Amazon.ca →</a>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">⛺</div>
-                    <div class="product-name">AC Infinity CLOUDLAB 4×4</div>
-                    <div class="product-desc">48"×48"×80" - Premium build with observation window and tool board.</div>
-                    <div class="product-price">$239 CAD</div>
-                    <span class="commission">~$10 commission</span>
-                    <a href="https://www.amazon.ca/s?k=ac+infinity+cloudlab&tag=cannacompare2-20" class="btn" target="_blank" rel="nofollow sponsored" onclick="trackAffiliateClick('AC Infinity CLOUDLAB 4x4', '239')">View on Amazon.ca →</a>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">⛺</div>
-                    <div class="product-name">MARS HYDRO 2×2 Tent</div>
-                    <div class="product-desc">Compact 24"×24"×55" tent. Perfect for small spaces or beginners.</div>
-                    <div class="product-price">$99 CAD</div>
-                    <span class="commission">~$4 commission</span>
-                    <a href="https://www.amazon.ca/s?k=mars+hydro+2x2+grow+tent&tag=cannacompare2-20" class="btn" target="_blank" rel="nofollow sponsored" onclick="trackAffiliateClick('MARS HYDRO 2x2 Tent', '99')">View on Amazon.ca →</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Ventilation -->
-        <section class="category" id="ventilation">
-            <h3 class="category-title">💨 Ventilation & Air Control</h3>
-            
-            <div class="products-grid">
-                <div class="product-card featured">
-                    <span class="featured-badge">Worth The Investment</span>
-                    <div class="product-image">💨</div>
-                    <div class="product-name">AC Infinity CLOUDLINE T6</div>
-                    <div class="product-desc">6-inch inline fan with smart controller. Adjusts speed based on temp/humidity. Whisper quiet.</div>
-                    <div class="product-price">$199 CAD</div>
-                    <span class="commission">~$8 commission</span>
-                    <a href="https://www.amazon.ca/s?k=ac+infinity+cloudline+t6&tag=cannacompare2-20" class="btn" target="_blank" rel="nofollow sponsored" onclick="trackAffiliateClick('AC Infinity CLOUDLINE T6', '199')">View on Amazon.ca →</a>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">💨</div>
-                    <div class="product-name">VIVOSUN 6" Fan + Filter Kit</div>
-                    <div class="product-desc">Complete kit with inline fan, carbon filter, and ducting. Budget-friendly option.</div>
-                    <div class="product-price">$139 CAD</div>
-                    <span class="commission">~$6 commission</span>
-                    <a href="https://www.amazon.ca/s?k=vivosun+ventilation+kit&tag=cannacompare2-20" class="btn" target="_blank" rel="nofollow sponsored" onclick="trackAffiliateClick('VIVOSUN 6\" Fan + Filter Kit', '139')">View on Amazon.ca →</a>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">💨</div>
-                    <div class="product-name">Govee WiFi Hygrometer</div>
-                    <div class="product-desc">Smart temp/humidity monitor with phone alerts. Essential for any grow.</div>
-                    <div class="product-price">$35 CAD</div>
-                    <span class="commission">~$1.40 commission</span>
-                    <a href="https://www.amazon.ca/s?k=govee+wifi+hygrometer&tag=cannacompare2-20" class="btn" target="_blank" rel="nofollow sponsored" onclick="trackAffiliateClick('Govee WiFi Hygrometer', '35')">View on Amazon.ca →</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Nutrients -->
-        <section class="category" id="nutrients">
-            <h3 class="category-title">🧪 Nutrients & Mediums</h3>
-            
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-image">🧪</div>
-                    <div class="product-name">FoxFarm Liquid Soil Trio</div>
-                    <div class="product-desc">Big Bloom, Grow Big, Tiger Bloom. The classic trio for soil grows.</div>
-                    <div class="product-price">$65 CAD</div>
-                    <span class="commission">~$2.60 commission</span>
-                    <a href="https://www.amazon.ca/s?k=foxfarm+nutrient+trio&tag=cannacompare2-20" class="btn" target="_blank" rel="nofollow sponsored" onclick="trackAffiliateClick('FoxFarm Liquid Soil Trio', '65')">View on Amazon.ca →</a>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">🧪</div>
-                    <div class="product-name">General Hydroponics Flora Trio</div>
-                    <div class="product-desc">Professional-grade nutrients. FloraGro, FloraBloom, FloraMicro system.</div>
-                    <div class="product-price">$55 CAD</div>
-                    <span class="commission">~$2.20 commission</span>
-                    <a href="https://www.amazon.ca/s?k=general+hydroponics+flora&tag=cannacompare2-20" class="btn" target="_blank" rel="nofollow sponsored" onclick="trackAffiliateClick('General Hydroponics Flora Trio', '55')">View on Amazon.ca →</a>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">🧪</div>
-                    <div class="product-name">Pro-Mix HP Mycorrhizae</div>
-                    <div class="product-desc">3.8 cu ft bale. High porosity soil with beneficial fungi. Canadian-made.</div>
-                    <div class="product-price">$45 CAD</div>
-                    <span class="commission">~$1.80 commission</span>
-                    <a href="https://www.amazon.ca/s?k=promix+hp+mycorrhizae&tag=cannacompare2-20" class="btn" target="_blank" rel="nofollow sponsored" onclick="trackAffiliateClick('Pro-Mix HP Mycorrhizae', '45')">View on Amazon.ca →</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Vaporizers -->
-        <section class="category" id="vaporizers">
-            <h3 class="category-title">💨 Dry Herb Vaporizers</h3>
-            
-            <div class="products-grid">
-                <div class="product-card featured">
-                    <span class="featured-badge">Top Pick</span>
-                    <div class="product-image">💨</div>
-                    <div class="product-name">PAX 3 Vaporizer</div>
-                    <div class="product-desc">The iPhone of vaporizers. 15-sec heat-up, 10-year warranty, smartphone app control.</div>
-                    <div class="product-price">$199 CAD</div>
-                    <span class="commission">~$8-16 commission</span>
-                    <a href="https://www.amazon.ca/s?k=pax+3+vaporizer&tag=cannacompare2-20" class="btn" target="_blank" rel="nofollow sponsored" onclick="trackAffiliateClick('PAX 3 Vaporizer', '199')">View on Amazon.ca →</a>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">💨</div>
-                    <div class="product-name">Arizer Solo 2</div>
-                    <div class="product-desc">All-glass vapor path, 3-hour battery life, easy to clean. Session vape for home use.</div>
-                    <div class="product-price">$149 CAD</div>
-                    <span class="commission">~$6-12 commission</span>
-                    <a href="https://www.amazon.ca/s?k=arizer+solo+2&tag=cannacompare2-20" class="btn" target="_blank" rel="nofollow sponsored" onclick="trackAffiliateClick('Arizer Solo 2', '149')">View on Amazon.ca →</a>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">💨</div>
-                    <div class="product-name">DynaVap M 2021</div>
-                    <div class="product-desc">Butane-powered, no battery needed. Indestructible, hits harder than electric. $89 steals.</div>
-                    <div class="product-price">$89 CAD</div>
-                    <span class="commission">~$3-7 commission</span>
-                    <a href="https://www.amazon.ca/s?k=dynavap+m+2021&tag=cannacompare2-20" class="btn" target="_blank" rel="nofollow sponsored" onclick="trackAffiliateClick('DynaVap M 2021', '89')">View on Amazon.ca →</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Accessories -->
-        <section class="category">
-            <h3 class="category-title">🛠️ Gear & Accessories</h3>
-            
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-image">🛠️</div>
-                    <div class="product-name">RAW Large Metal Tray</div>
-                    <div class="product-desc">Classic rolling tray with curved edges. 14"×11" non-stick surface.</div>
-                    <div class="product-price">$25 CAD</div>
-                    <span class="commission">~$1 commission</span>
-                    <a href="https://www.amazon.ca/s?k=raw+rolling+tray+large&tag=cannacompare2-20" class="btn" target="_blank" rel="nofollow sponsored" onclick="trackAffiliateClick('RAW Large Metal Tray', '25')">View on Amazon.ca →</a>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">🛠️</div>
-                    <div class="product-name">4-Piece Herb Grinder</div>
-                    <div class="product-desc">Aircraft aluminum, diamond-shaped teeth, pollen catcher. 2.5 inch.</div>
-                    <div class="product-price">$29 CAD</div>
-                    <span class="commission">~$1.16 commission</span>
-                    <a href="https://www.amazon.ca/s?k=4+piece+aluminum+grinder+2.5&tag=cannacompare2-20" class="btn" target="_blank" rel="nofollow sponsored" onclick="trackAffiliateClick('4-Piece Herb Grinder', '29')">View on Amazon.ca →</a>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">🛠️</div>
-                    <div class="product-name">CVault Storage Container</div>
-                    <div class="product-desc">Airtight stainless steel with humidity packs. Preserves freshness perfectly.</div>
-                    <div class="product-price">$45 CAD</div>
-                    <span class="commission">~$1.80 commission</span>
-                    <a href="https://www.amazon.ca/s?k=cvault+storage+container&tag=cannacompare2-20" class="btn" target="_blank" rel="nofollow sponsored" onclick="trackAffiliateClick('CVault Storage Container', '45')">View on Amazon.ca →</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Email Newsletter -->
-        <section class="newsletter">
-            <h3>📧 Get Weekly Grow Tips</h3>
-            <p>Equipment deals, growing guides, and setup advice. No spam, unsubscribe anytime.</p>
-            <form id="newsletter-form">
-                <input type="email" id="email-input" placeholder="Enter your email" required>
-                <button type="submit" class="btn-primary">Subscribe</button>
-            </form>
-            <p class="success-message" id="success-msg" style="display: none; color: var(--accent);">✅ Thanks! You're on the list.</p>
-        </section>
-
-        <div class="why-section">
-            <h3>🇨🇦 Why Amazon.ca?</h3>
-            <div class="why-grid">
-                <div class="why-item">
-                    <div class="why-icon">🚚</div>
-                    <h4>Free Prime Shipping</h4>
-                    <p>Fast delivery across Canada. No cross-border fees.</p>
-                </div>
-                <div class="why-item">
-                    <div class="why-icon">💰</div>
-                    <h4>CAD Prices</h4>
-                    <p>No currency conversion. See exactly what you'll pay.</p>
-                </div>
-                <div class="why-item">
-                    <div class="why-icon">↩️</div>
-                    <h4>Easy Returns</h4>
-                    <p>Amazon's Canadian return policy. Hassle-free.</p>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <footer class="footer">
-        <p>GrowDepot | Premium Equipment for Canadian Growers</p>
-        <p>Amazon.ca Associates • Affiliate Disclosure</p>
-        <p class="disclosure" id="disclosure">
-            DISCLOSURE: GrowDepot participates in the Amazon Associates Program. 
-            We earn from qualifying purchases at no extra cost to you. All prices in CAD. 
-            Products ship from Canada via Amazon.ca.
-        </p>
-    </footer>
-
-    <script>
-        // Newsletter Form Handler
-        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = document.getElementById('email-input').value;
-            
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'newsletter_signup', {
-                    'event_category': 'engagement',
-                    'event_label': email
-                });
-            }
-            
-            document.getElementById('success-msg').style.display = 'block';
-            document.getElementById('email-input').value = '';
-            
-            let emails = JSON.parse(localStorage.getItem('growdepot_emails') || '[]');
-            emails.push({
-                email: email,
-                date: new Date().toISOString()
-            });
-            localStorage.setItem('growdepot_emails', JSON.stringify(emails));
-        });
         
-        // Track all affiliate link clicks
-        document.querySelectorAll('a[href*="amazon.ca"]').forEach(function(link) {
-            link.addEventListener('click', function(e) {
-                const product = this.closest('.product-card')?.querySelector('.product-name')?.textContent || 'Unknown Product';
-                const priceText = this.closest('.product-card')?.querySelector('.product-price')?.textContent || '';
-                const price = parseFloat(priceText.replace(/[^0-9.]/g, '')) || 0;
-                
-                if (typeof trackAffiliateClick === 'function') {
-                    trackAffiliateClick(product, price);
-                }
-            });
-        });
-    </script>
+        <!-- Quick Nav -->
+        <div class="quick-nav">
+            <a href="#lights">💡 Lights</a>
+            <a href="#tents">⛺ Tents</a>
+            <a href="#vent">💨 Fans</a>
+            <a href="#nutes">🧪 Nutes</a>
+            <a href="#vapes">💨 Vapes</a>
+            <a href="blog/" class="blog">📝 Blog</a>
+        </div>
+        
+        <!-- Calculator CTA -->
+        <div class="calc-cta">
+            <h3>🧮 Not sure what you need?</h3>
+            <p>Takes 60 seconds. Get exact tent size, LED wattage, total cost.</p>
+            <a href="grow-calculator.html">Start Calculator →</a>
+        </div>
+        
+        <!-- Grow Lights -->
+        <section class="section" id="lights">
+            <h2 class="section-title">💡 Grow Lights</h2>
+            <div class="products-grid">
+                <div class="product-card featured">
+                    <div class="product-icon">💡</div>
+                    <div class="product-info">
+                        <div class="product-name">MARS HYDRO TSL2000 300W</div>
+                        <div class="product-desc">Full spectrum LED for 2×4ft. Dimmable, energy efficient.</div>
+                        <div class="product-bottom">
+                            <span class="product-price">$269</span>
+                            <a href="https://www.amazon.ca/s?k=mars+hydro+tsl2000&tag=cannacompare2-20" class="product-btn" target="_blank" onclick="trackAffiliateClick('MARS HYDRO TSL2000', '269')">View →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">💡</div>
+                    <div class="product-info">
+                        <div class="product-name">SPIDER FARMER SF1000</div>
+                        <div class="product-desc">Samsung LEDs, 2×2ft coverage. Great for beginners.</div>
+                        <div class="product-bottom">
+                            <span class="product-price">$159</span>
+                            <a href="https://www.amazon.ca/s?k=spider+farmer+sf1000&tag=cannacompare2-20" class="product-btn" target="_blank" onclick="trackAffiliateClick('SPIDER FARMER SF1000', '159')">View →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">💡</div>
+                    <div class="product-info">
+                        <div class="product-name">VIPARSPECTRA P2000</div>
+                        <div class="product-desc">Budget-friendly. Good for 2×4ft grows.</div>
+                        <div class="product-bottom">
+                            <span class="product-price">$189</span>
+                            <a href="https://www.amazon.ca/s?k=viparspectra+p2000&tag=cannacompare2-20" class="product-btn" target="_blank" onclick="trackAffiliateClick('VIPARSPECTRA P2000', '189')">View →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Grow Tents -->
+        <section class="section" id="tents">
+            <h2 class="section-title">⛺ Grow Tents</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-icon">⛺</div>
+                    <div class="product-info">
+                        <div class="product-name">VIVOSUN 2×4 Tent</div>
+                        <div class="product-desc">48″×24″×60″. Fits 2-4 plants. Light-proof frame.</div>
+                        <div class="product-bottom">
+                            <span class="product-price">$149</span>
+                            <a href="https://www.amazon.ca/s?k=vivosun+2x4+grow+tent&tag=cannacompare2-20" class="product-btn" target="_blank" onclick="trackAffiliateClick('VIVOSUN 2x4 Tent', '149')">View →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card featured">
+                    <div class="product-icon">⛺</div>
+                    <div class="product-info">
+                        <div class="product-name">AC Infinity 4×4</div>
+                        <div class="product-desc">48″×48″×80″. Premium build, observation window.</div>
+                        <div class="product-bottom">
+                            <span class="product-price">$239</span>
+                            <a href="https://www.amazon.ca/s?k=ac+infinity+cloudlab&tag=cannacompare2-20" class="product-btn" target="_blank" onclick="trackAffiliateClick('AC Infinity 4x4', '239')">View →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">⛺</div>
+                    <div class="product-info">
+                        <div class="product-name">MARS HYDRO 2×2</div>
+                        <div class="product-desc">Compact 24″×24″. Perfect for small spaces.</div>
+                        <div class="product-bottom">
+                            <span class="product-price">$99</span>
+                            <a href="https://www.amazon.ca/s?k=mars+hydro+2x2+grow+tent&tag=cannacompare2-20" class="product-btn" target="_blank" onclick="trackAffiliateClick('MARS HYDRO 2x2', '99')">View →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Ventilation -->
+        <section class="section" id="vent">
+            <h2 class="section-title">💨 Ventilation & Air</h2>
+            <div class="products-grid">
+                <div class="product-card featured">
+                    <div class="product-icon">💨</div>
+                    <div class="product-info">
+                        <div class="product-name">AC Infinity CLOUDLINE T6</div>
+                        <div class="product-desc">6″ smart fan. Auto speed control. Whisper quiet.</div>
+                        <div class="product-bottom">
+                            <span class="product-price">$199</span>
+                            <a href="https://www.amazon.ca/s?k=ac+infinity+cloudline+t6&tag=cannacompare2-20" class="product-btn" target="_blank" onclick="trackAffiliateClick('AC Infinity T6', '199')">View →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">💨</div>
+                    <div class="product-info">
+                        <div class="product-name">VIVOSUN Fan + Filter Kit</div>
+                        <div class="product-desc">6″ kit with carbon filter, fan, ducting.</div>
+                        <div class="product-bottom">
+                            <span class="product-price">$139</span>
+                            <a href="https://www.amazon.ca/s?k=vivosun+ventilation+kit&tag=cannacompare2-20" class="product-btn" target="_blank" onclick="trackAffiliateClick('VIVOSUN Fan Kit', '139')">View →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">📊</div>
+                    <div class="product-info">
+                        <div class="product-name">Govee WiFi Hygrometer</div>
+                        <div class="product-desc">Smart temp/humidity monitor with phone alerts.</div>
+                        <div class="product-bottom">
+                            <span class="product-price">$35</span>
+                            <a href="https://www.amazon.ca/s?k=govee+wifi+hygrometer&tag=cannacompare2-20" class="product-btn" target="_blank" onclick="trackAffiliateClick('Govee Hygrometer', '35')">View →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Nutrients (horizontal scroll for more items) -->
+        <section class="section" id="nutes">
+            <h2 class="section-title">🧪 Nutrients & Mediums</h2>
+            <div class="scroll-section">
+                <div class="scroll-card">
+                    <div class="product-icon">🧪</div>
+                    <div class="product-name">FoxFarm Soil Trio</div>
+                    <div class="product-desc">Big Bloom, Grow Big, Tiger Bloom. Classic soil nutrients.</div>
+                    <div class="product-price">$65</div>
+                    <a href="https://www.amazon.ca/s?k=foxfarm+nutrient+trio&tag=cannacompare2-20" class="btn" target="_blank" onclick="trackAffiliateClick('FoxFarm Trio', '65')">View on Amazon →</a>
+                </div>
+                <div class="scroll-card">
+                    <div class="product-icon">🧪</div>
+                    <div class="product-name">General Hydroponics Flora</div>
+                    <div class="product-desc">Pro-grade hydro nutrients. FloraGro/Bloom/Micro.</div>
+                    <div class="product-price">$55</div>
+                    <a href="https://www.amazon.ca/s?k=general+hydroponics+flora&tag=cannacompare2-20" class="btn" target="_blank" onclick="trackAffiliateClick('GH Flora', '55')">View on Amazon →</a>
+                </div>
+                <div class="scroll-card">
+                    <div class="product-icon">🏔️</div>
+                    <div class="product-name">Pro-Mix HP Mycorrhizae</div>
+                    <div class="product-desc">3.8 cu ft bale. High porosity + fungi. Canadian-made.</div>
+                    <div class="product-price">$45</div>
+                    <a href="https://www.amazon.ca/s?k=promix+hp+mycorrhizae&tag=cannacompare2-20" class="btn" target="_blank" onclick="trackAffiliateClick('Pro-Mix HP', '45')">View on Amazon →</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Vaporizers -->
+        <section class="section" id="vapes">
+            <h2 class="section-title">💨 Dry Herb Vaporizers</h2>
+            <div class="products-grid">
+                <div class="product-card featured">
+                    <div class="product-icon">📱</div>
+                    <div class="product-info">
+                        <div class="product-name">PAX 3 Vaporizer</div>
+                        <div class="product-desc">The iPhone of vaporizers. App control, 10-year warranty.</div>
+                        <div class="product-bottom">
+                            <span class="product-price">$199</span>
+                            <a href="https://www.amazon.ca/s?k=pax+3+vaporizer&tag=cannacompare2-20" class="product-btn" target="_blank" onclick="trackAffiliateClick('PAX 3', '199')">View →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">🧪</div>
+                    <div class="product-info">
+                        <div class="product-name">Arizer Solo 2</div>
+                        <div class="product-desc">All-glass path, 3-hour battery. Session vape.</div>
+                        <div class="product-bottom">
+                            <span class="product-price">$149</span>
+                            <a href="https://www.amazon.ca/s?k=arizer+solo+2&tag=cannacompare2-20" class="product-btn" target="_blank" onclick="trackAffiliateClick('Arizer Solo 2', '149')">View →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">🔥</div>
+                    <div class="product-info">
+                        <div class="product-name">DynaVap M 2021</div>
+                        <div class="product-desc">Butane-powered, no battery. Indestructible.</div>
+                        <div class="product-bottom">
+                            <span class="product-price">$89</span>
+                            <a href="https://www.amazon.ca/s?k=dynavap+m+2021&tag=cannacompare2-20" class="product-btn" target="_blank" onclick="trackAffiliateClick('DynaVap M', '89')">View →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Why Amazon.ca -->
+        <div class="section">
+            <div class="why">
+                <h3>🇨🇦 Why Amazon.ca?</h3>
+                <div class="why-grid">
+                    <div class="why-item">
+                        <div class="why-icon">🚚</div>
+                        <div>Prime Shipping</div>
+                    </div>
+                    <div class="why-item">
+                        <div class="why-icon">💰</div>
+                        <div>CAD Prices</div>
+                    </div>
+                    <div class="why-item">
+                        <div class="why-icon">↩️</div>
+                        <div>Easy Returns</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Affiliate Footer -->
+        <div class="affiliate-note">
+            <p>🔗 This page contains Amazon.ca affiliate links. We earn a commission at no extra cost to you. <a href="#disclosure">Learn more</a></p>
+            <p style="margin-top:8px;">DISCLOSURE: GrowDepot participates in the Amazon Associates Program. All prices in CAD. Products ship from Canada via Amazon.ca.</p>
+        </div>
+    </div>
+    
+    <!-- Sticky CTA (Mobile Only) -->
+    <div class="sticky-cta">
+        <a href="grow-calculator.html">🧮 Calculator</a>
+        <a href="blog/" class="secondary">📝 Blog</a>
+    </div>
 </body>
 </html>
