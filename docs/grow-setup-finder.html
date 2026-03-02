@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>Grow Setup Finder | GrowDepot Canada</title>
+    <meta name="description" content="Find your perfect grow setup in 60 seconds. Indoor/outdoor, budget, experience level. Get exact equipment recommendations with Canadian prices.">
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E20VJQJG27"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-E20VJQJG27');
+        function trackAffiliateClick(product, price) {
+            gtag('event', 'affiliate_click', {'product_name': product, 'product_price': price, 'currency': 'CAD'});
+        }
+    </script>
+    
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --card: #131313;
+            --border: #1e1e1e;
+            --text: #e0e0e0;
+            --text-dim: #888;
+            --accent: #4ade80;
+            --accent-dim: #4ade8022;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif; 
+            background: var(--bg); 
+            color: var(--text); 
+            line-height: 1.4;
+            min-height: 100vh;
+        }
+        
+        .topbar {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: rgba(10,10,10,0.95); backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 16px;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 100;
+        }
+        .logo { font-size: 1.1rem; font-weight: 700; }
+        .logo span { color: var(--accent); }
+        .back-link { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; }
+        
+        .container { padding: 70px 16px 40px; max-width: 600px; margin: 0 auto; }
+        
+        /* Progress Bar */
+        .progress-bar {
+            display: flex; gap: 4px;
+            margin-bottom: 24px;
+        }
+        .progress-step {
+            flex: 1; height: 4px;
+            background: var(--border);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+        .progress-step.active { background: var(--accent); }
+        .progress-step.completed { background: var(--accent); opacity: 0.5; }
+        
+        /* Question Cards */
+        .question-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px 24px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        .question-card.active { display: block; animation: slideIn 0.4s ease; }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .question-number {
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .question-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .question-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            margin-bottom: 24px;
+        }
+        
+        /* Answer Options */
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .option {
+            background: rgba(255,255,255,0.03);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 16px 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .option:hover {
+            border-color: var(--accent);
+            background: rgba(74, 222, 128, 0.05);
+        }
+        .option-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        .option-text {
+            flex: 1;
+        }
+        .option-label {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 2px;
+        }
+        .option-desc {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+        .option-arrow {
+            color: var(--text-dim);
+            font-size: 1.2rem;
+        }
+        
+        /* Results Section */
+        .results {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        .results.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        .result-header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+        .result-emoji { font-size: 3rem; margin-bottom: 12px; }
+        .result-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; }
+        .result-subtitle { font-size: 0.9rem; color: var(--text-dim); }
+        
+        .setup-summary {
+            background: linear-gradient(135deg, rgba(74,222,128,0.1), rgba(74,222,128,0.03));
+            border: 1px solid rgba(74,222,128,0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        .setup-summary h3 {
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .setup-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+        .setup-item:last-child { border-bottom: none; }
+        .setup-item strong { color: var(--accent); }
+        
+        /* Product Recommendations */
+        .recommendation {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+        .rec-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .rec-icon { font-size: 2rem; }
+        .rec-title { font-weight: 600; font-size: 1.1rem; }
+        .rec-why {
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin-bottom: 16px;
+            padding: 8px 12px;
+            background: rgba(74,222,128,0.1);
+            border-radius: 6px;
+        }
+        
+        .product-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .product-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+        }
+        .product-item:hover {
+            border-color: var(--accent);
+            background: rgba(74,222,128,0.05);
+        }
+        .product-img {
+            width: 60px; height: 60px;
+            background: var(--border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        .product-info { flex: 1; }
+        .product-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 2px;
+        }
+        .product-specs {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+        .product-price {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 1rem;
+        }
+        .product-link {
+            display: block;
+            margin-top: 12px;
+            padding: 14px;
+            background: var(--accent);
+            color: #000;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+        .product-link:hover { opacity: 0.9; }
+        
+        .total-box {
+            background: var(--card);
+            border: 2px solid var(--accent);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin: 24px 0;
+        }
+        .total-label {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-bottom: 4px;
+        }
+        .total-amount {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+        .total-note {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            margin-top: 8px;
+        }
+        
+        .start-over {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .start-over button {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .start-over button:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        
+        /* Hero for tool */
+        .tool-hero {
+            text-align: center;
+            padding: 20px 0 30px;
+        }
+        .tool-hero h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .tool-hero p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-dim);
+            font-size: 0.75rem;
+            border-top: 1px solid var(--border);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <a href="/growdepot/" class="back-link">← Back</a>
+        <div class="logo">Grow<span>Depot</span></div>
+        <span></span>
+    </div>
+    
+    <div class="container">
+        <!-- Tool Hero -->
+        <div class="tool-hero" id="heroSection">
+            <h1>🎯 Find Your Perfect Setup</h1>
+            <p>3 questions. 60 seconds. Exact equipment recommendations for Canadian growers.</p>
+        </div>
+        
+        <!-- Progress Bar -->
+        <div class="progress-bar" id="progressBar">
+            <div class="progress-step active" data-step="1"></div>
+            <div class="progress-step" data-step="2"></div>
+            <div class="progress-step" data-step="3"></div>
+        </div>
+        
+        <!-- Question 1: Indoor vs Outdoor -->
+        <div class="question-card active" data-question="1">
+            <div class="question-number">Question 1 of 3</div>
+            <div class="question-title">Where are you growing?</div>
+            <div class="question-subtitle">This determines your tent size and ventilation needs</div>
+            
+            <div class="options">
+                <div class="option" onclick="selectOption(1, 'indoor')">
+                    <div class="option-icon">🏠</div>
+                    <div class="option-text">
+                        <div class="option-label">Indoor</div>
+                        <div class="option-desc">Basement, closet, spare room. Full environmental control.</div>
+                    </div>
+                    <div class="option-arrow">→</div>
+                </div>
+                
+                <div class="option" onclick="selectOption(1, 'outdoor')">
+                    <div class="option-icon">🌞</div>
+                    <div class="option-text">
+                        <div class="option-label">Outdoor / Greenhouse</div>
+                        <div class="option-desc">Backyard, balcony, greenhouse. Sun + weather dependent.</div>
+                    </div>
+                    <div class="option-arrow">→</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Question 2: Experience Level -->
+        <div class="question-card" data-question="2">
+            <div class="question-number">Question 2 of 3</div>
+            <div class="question-title">What's your experience?</div>
+            <div class="question-subtitle">We recommend different equipment for beginners vs. pros</div>
+            
+            <div class="options">
+                <div class="option" onclick="selectOption(2, 'beginner')">
+                    <div class="option-icon">🌱</div>
+                    <div class="option-text">
+                        <div class="option-label">First Grow</div>
+                        <div class="option-desc">Keep it simple. Automatic everything, forgiving setup.</div>
+                    </div>
+                    <div class="option-arrow">→</div>
+                </div>
+                
+                <div class="option" onclick="selectOption(2, 'intermediate')">
+                    <div class="option-icon">🪴</div>
+                    <div class="option-text">
+                        <div class="option-label">Some Experience</div>
+                        <div class="option-desc">1-2 grows under your belt. Ready for better equipment.</div>
+                    </div>
+                    <div class="option-arrow">→</div>
+                </div>
+                
+                <div class="option" onclick="selectOption(2, 'expert')">
+                    <div class="option-icon">🏆</div>
+                    <div class="option-text">
+                        <div class="option-label">Veteran Grower</div>
+                        <div class="option-desc">3+ grows. You want pro-level yield and control.</div>
+                    </div>
+                    <div class="option-arrow">→</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Question 3: Budget -->
+        <div class="question-card" data-question="3">
+            <div class="question-number">Question 3 of 3</div>
+            <div class="question-title">What's your budget?</div>
+            <div class="question-subtitle">Total setup cost (tent, light, fan, nutrients)</div>
+            
+            <div class="options">
+                <div class="option" onclick="selectOption(3, 'budget')">
+                    <div class="option-icon">💰</div>
+                    <div class="option-text">
+                        <div class="option-label">Budget ($300-500)</div>
+                        <div class="option-desc">Entry-level that works. 2x2 or 2x4 tent.</div>
+                    </div>
+                    <div class="option-arrow">→</div>
+                </div>
+                
+                <div class="option" onclick="selectOption(3, 'mid')">
+                    <div class="option-icon">💎</div>
+                    <div class="option-text">
+                        <div class="option-label">Mid-Range ($500-800)</div>
+                        <div class="option-desc">Best bang for buck. 3x3 or 4x4 setup.</div>
+                    </div>
+                    <div class="option-arrow">→</div>
+                </div>
+                
+                <div class="option" onclick="selectOption(3, 'premium')">
+                    <div class="option-icon">👑</div>
+                    <div class="option-text">
+                        <div class="option-label">Premium ($800+)</div>
+                        <div class="option-desc">Top-tier equipment. Maximum yield potential.</div>
+                    </div>
+                    <div class="option-arrow">→</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Results Section -->
+        <div class="results" id="resultsSection">
+            <div class="result-header">
+                <div class="result-emoji" id="resultEmoji">🎯</div>
+                <div class="result-title" id="resultTitle">Your Perfect Setup</div>
+                <div class="result-subtitle" id="resultSubtitle">Based on your answers, here's what you need</div>
+            </div>
+            
+            <div class="setup-summary">
+                <h3>📋 Setup Summary</h3>
+                <div id="setupSummary"></div>
+            </div>
+            
+            <div id="recommendations"></div>
+            
+            <div class="total-box">
+                <div class="total-label">Total Setup Cost</div>
+                <div class="total-amount" id="totalCost">$0</div>
+                <div class="total-note">🇨🇦 CAD prices • Ships from Amazon.ca • Prime eligible</div>
+            </div>
+            
+            <div class="start-over">
+                <button onclick="restart()">↺ Start Over</button>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>🔗 Contains Amazon.ca affiliate links • 🇨🇦 CAD prices • Prime shipping</p>
+    </footer>
+    
+    <script>
+        // User selections
+        let selections = {
+            location: null,
+            experience: null,
+            budget: null
+        };
+        
+        // Product database
+        const products = {
+            indoor: {
+                budget: {
+                    beginner: {
+                        tent: { name: 'MARS HYDRO 2x2 Grow Tent', price: 89, specs: '24"x24"x55"', emoji: '⛺', why: 'Perfect for 1 plant, beginner-friendly' },
+                        light: { name: 'SPIDER FARMER SF1000', price: 159, specs: '100W LED', emoji: '💡', why: 'Full spectrum, dimmable' },
+                        fan: { name: 'AC Infinity RAXIAL S4', price: 89, specs: '4" inline fan', emoji: '💨', why: 'Quiet, efficient ventilation' },
+                        nutes: { name: 'General Hydroponics Flora Series', price: 45, specs: '3-part kit', emoji: '🧪', why: 'Complete nutrient system' }
+                    },
+                    intermediate: {
+                        tent: { name: 'VIVOSUN 2x4 Grow Tent', price: 119, specs: '48"x24"x60"', emoji: '⛺', why: '2-plant capacity, quality zippers' },
+                        light: { name: 'MARS HYDRO TS1000', price: 189, specs: '150W LED', emoji: '💡', why: 'Better coverage for 2x4' },
+                        fan: { name: 'AC Infinity Cloudline T4', price: 129, specs: '4" smart fan', emoji: '💨', why: 'Temp/humidity control' },
+                        nutes: { name: 'Advanced Nutrients pH Perfect', price: 65, specs: 'Bloom/Micro/Grow', emoji: '🧪', why: 'pH balanced, easy mixing' }
+                    },
+                    expert: {
+                        tent: { name: 'GORILLA Grow Tent 3x3', price: 349, specs: '36"x36"x83"', emoji: '⛺', why: 'Tallest tent, best quality' },
+                        light: { name: 'Spider Farmer SE3000', price: 419, specs: '300W Samsung LM301B', emoji: '💡', why: 'Commercial-grade diodes' },
+                        fan: { name: 'AC Infinity Cloudline T6', price: 159, specs: '6" smart fan', emoji: '💨', why: '6" airflow for 3x3' },
+                        nutes: { name: 'Canna Coco A+B Bundle', price: 89, specs: 'Pro line nutrients', emoji: '🧪', why: 'Coco-specific precision' }
+                    }
+                },
+                mid: {
+                    beginner: {
+                        tent: { name: 'MARS HYDRO 3x3 Grow Tent', price: 149, specs: '36"x36"x72"', emoji: '⛺', why: 'Room for 2-3 plants' },
+                        light: { name: 'SPIDER FARMER SF2000', price: 289, specs: '200W LED', emoji: '💡', why: 'Perfect for 3x3 coverage' },
+                        fan: { name: 'AC Infinity Cloudline T6', price: 159, specs: '6" smart fan', emoji: '💨', why: '6" required for 3x3' },
+                        nutes: { name: 'Fox Farm Nutrient Trio', price: 75, specs: 'Big Bloom/Grow Big/Tiger Bloom', emoji: '🧪', why: 'Tried and true system' }
+                    },
+                    intermediate: {
+                        tent: { name: 'VIVOSUN 4x4 Grow Tent', price: 189, specs: '48"x48"x80"', emoji: '⛺', why: '4-plant capacity, height for training' },
+                        light: { name: 'MARS HYDRO TSL2000', price: 329, specs: '300W LED bar', emoji: '💡', why: 'Spread design, even canopy' },
+                        fan: { name: 'AC Infinity Cloudline T6 + Carbon Filter', price: 239, specs: '6" + 6"x18" filter', emoji: '🌬️', why: 'Odor control combo' },
+                        nutes: { name: 'House & Garden Starter Kit', price: 120, specs: '4-part Dutch nutrients', emoji: '🧪', why: 'Premium European formula' }
+                    },
+                    expert: {
+                        tent: { name: 'GORILLA Grow Tent 4x4', price: 449, specs: '48"x48"x83"', emoji: '⛺', why: 'Commercial-grade, thickest fabric' },
+                        light: { name: 'HLG 350R Diablo', price: 599, specs: '350W Quantum Board', emoji: '💡', why: 'Top-tier efficiency' },
+                        fan: { name: 'AC Infinity Cloudline S8', price: 199, specs: '8" heavy duty', emoji: '💨', why: '8" airflow for 4x4' },
+                        nutes: { name: 'Athena Ag Blended Kit', price: 180, specs: 'Commercial grow nutrients', emoji: '🧪', why: 'Industry standard for pros' }
+                    }
+                },
+                premium: {
+                    any: {
+                        tent: { name: 'GORILLA Grow Tent 5x5', price: 549, specs: '60"x60"x83"', emoji: '⛺', why: 'Maximum space, best build quality' },
+                        light: { name: 'HLG 600 Rspec', price: 849, specs: '600W Quantum Board', emoji: '💡', why: '600W covers 5x5 perfectly' },
+                        fan: { name: 'AC Infinity 8" System + Carbon Filter', price: 349, specs: '8" intake/exhaust + filter', emoji: '🌬️', why: 'Complete ventilation system' },
+                        nutes: { name: 'Athena Ag Professional Kit', price: 250, specs: 'Complete commercial line', emoji: '🧪', why: 'Used by licensed producers' },
+                        extras: { name: 'AC Infinity Controller 69 Pro', price: 129, specs: 'Smart environment control', emoji: '📱', why: 'Automate everything' }
+                    }
+                }
+            },
+            outdoor: {
+                budget: {
+                    any: {
+                        tent: { name: 'Greenhouse or Outdoor Plot', price: 0, specs: 'Natural sunlight', emoji: '☀️', why: 'Sun is free and powerful' },
+                        light: { name: 'No Light Needed', price: 0, specs: 'Use the sun', emoji: '🌞', why: 'Skip the LED, use nature' },
+                        fan: { name: 'Clip Fan (Battery)', price: 25, specs: 'USB/battery powered', emoji: '💨', why: 'Air circulation if greenhouse' },
+                        nutes: { name: 'Green Planet GP3 Starter', price: 55, specs: '3-part outdoor formula', emoji: '🧪', why: 'Weather-resistant feeding' },
+                        extras: { name: 'Plant Stakes & Netting', price: 35, specs: 'Support + pest barrier', emoji: '🌿', why: 'Prevent mold, support buds' }
+                    }
+                },
+                mid: {
+                    any: {
+                        tent: { name: 'Portable Greenhouse 6x8', price: 159, specs: 'Weather protection', emoji: '🏠', why: 'Extend season, rain cover' },
+                        light: { name: 'SPIDER FARMER SF1000 (Supplemental)', price: 159, specs: '100W for cloudy days', emoji: '💡', why: 'Backup for bad weather' },
+                        fan: { name: 'Solar Powered Fan', price: 89, specs: 'Greenhouse ventilation', emoji: '💨', why: 'No electricity needed' },
+                        nutes: { name: 'Advanced Nutrients Outdoor', price: 85, specs: '4-part system', emoji: '🧪', why: 'Designed for outside' },
+                        extras: { name: 'Drip Irrigation Kit', price: 129, specs: 'Automatic watering', emoji: '💧', why: 'Set and forget during vacation' }
+                    }
+                },
+                premium: {
+                    any: {
+                        tent: { name: 'Premium Polycarbonate Greenhouse', price: 899, specs: '8x10 insulated', emoji: '🏠', why: '4-season growing possible' },
+                        light: { name: 'HLG 300L B-Spec', price: 419, specs: '300W supplemental', emoji: '💡', why: 'Veg-focused spectrum' },
+                        fan: { name: 'AC Infinity Solar Fan System', price: 299, specs: 'Complete greenhouse ventilation', emoji: '🌬️', why: 'Solar powered, automated' },
+                        nutes: { name: 'Athena Pro Line Outdoor', price: 180, specs: 'Professional outdoor formula', emoji: '🧪', why: 'Maximum yield potential' },
+                        extras: { name: 'Smart Irrigation Controller', price: 249, specs: 'WiFi watering system', emoji: '📱', why: 'Monitor from phone' }
+                    }
+                }
+            }
+        };
+        
+        // Amazon affiliate links (generic search links with your tag)
+        function getAmazonLink(productName) {
+            const search = encodeURIComponent(productName + ' Canada');
+            return `https://www.amazon.ca/s?k=${search}&tag=cannacompare2-20`;
+        }
+        
+        function selectOption(question, value) {
+            // Store selection
+            if (question === 1) selections.location = value;
+            if (question === 2) selections.experience = value;
+            if (question === 3) selections.budget = value;
+            
+            // Update progress
+            updateProgress(question);
+            
+            // Show next question or results
+            if (question < 3) {
+                showQuestion(question + 1);
+            } else {
+                showResults();
+            }
+        }
+        
+        function updateProgress(current) {
+            document.querySelectorAll('.progress-step').forEach((step, index) => {
+                step.classList.remove('active', 'completed');
+                if (index < current) {
+                    step.classList.add('completed');
+                } else if (index === current) {
+                    step.classList.add('active');
+                }
+            });
+        }
+        
+        function showQuestion(num) {
+            document.querySelectorAll('.question-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            document.querySelector(`.question-card[data-question="${num}"]`).classList.add('active');
+            
+            // Hide hero on later questions
+            if (num > 1) {
+                document.getElementById('heroSection').style.display = 'none';
+            }
+        }
+        
+        function showResults() {
+            // Hide questions, show results
+            document.querySelectorAll('.question-card').forEach(card => {
+                card.style.display = 'none';
+            });
+            document.getElementById('progressBar').style.display = 'none';
+            document.getElementById('heroSection').style.display = 'none';
+            document.getElementById('resultsSection').classList.add('active');
+            
+            // Build recommendations
+            buildRecommendations();
+        }
+        
+        function buildRecommendations() {
+            const { location, experience, budget } = selections;
+            
+            // Get product set
+            let productSet;
+            if (location === 'outdoor') {
+                // Outdoor doesn't care about experience level much
+                productSet = products.outdoor[budget].any;
+            } else {
+                // Indoor uses experience level
+                const expLevel = budget === 'premium' ? 'any' : experience;
+                productSet = products.indoor[budget][expLevel] || products.indoor[budget].beginner;
+            }
+            
+            // Calculate total
+            let total = 0;
+            Object.values(productSet).forEach(item => {
+                total += item.price;
+            });
+            
+            // Build setup summary
+            const summaryHTML = `
+                <div class="setup-item">
+                    <span>Growing</span>
+                    <strong>${location === 'indoor' ? 'Indoor' : 'Outdoor/Greenhouse'}</strong>
+                </div>
+                <div class="setup-item">
+                    <span>Experience</span>
+                    <strong>${experience.charAt(0).toUpperCase() + experience.slice(1)}</strong>
+                </div>
+                <div class="setup-item">
+                    <span>Budget</span>
+                    <strong>${budget.charAt(0).toUpperCase() + budget.slice(1)}</strong>
+                </div>
+            `;
+            document.getElementById('setupSummary').innerHTML = summaryHTML;
+            
+            // Build product recommendations
+            const recHTML = Object.entries(productSet).map(([key, item]) => {
+                const amazonLink = getAmazonLink(item.name);
+                return `
+                    <div class="recommendation">
+                        <div class="rec-header">
+                            <div class="rec-icon">${item.emoji}</div>
+                            <div class="rec-title">${key.charAt(0).toUpperCase() + key.slice(1)}</div>
+                        </div>
+                        <div class="rec-why">${item.why}</div>
+                        <div class="product-list">
+                            <div class="product-item">
+                                <div class="product-img">${item.emoji}</div>
+                                <div class="product-info">
+                                    <div class="product-name">${item.name}</div>
+                                    <div class="product-specs">${item.specs}</div>
+                                </div>
+                                <div class="product-price">$${item.price}</div>
+                            </div>
+                        </div>
+                        <a href="${amazonLink}" class="product-link" target="_blank" onclick="trackAffiliateClick('${item.name}', ${item.price})" rel="noopener">
+                            View on Amazon.ca →
+                        </a>
+                    </div>
+                `;
+            }).join('');
+            
+            document.getElementById('recommendations').innerHTML = recHTML;
+            document.getElementById('totalCost').textContent = `$${total}`;
+            
+            // Update result emoji based on setup
+            const emoji = location === 'outdoor' ? '🌞' : (budget === 'premium' ? '👑' : '🎯');
+            document.getElementById('resultEmoji').textContent = emoji;
+        }
+        
+        function restart() {
+            // Reset selections
+            selections = { location: null, experience: null, budget: null };
+            
+            // Reset UI
+            document.querySelectorAll('.progress-step').forEach(step => {
+                step.classList.remove('completed');
+            });
+            document.querySelector('.progress-step[data-step="1"]').classList.add('active');
+            
+            // Show hero and first question
+            document.getElementById('heroSection').style.display = 'block';
+            document.getElementById('progressBar').style.display = 'flex';
+            document.getElementById('resultsSection').classList.remove('active');
+            
+            document.querySelectorAll('.question-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            document.querySelector('.question-card[data-question="1"]').classList.add('active');
+        }
+    </script>
+</body>
+</html>

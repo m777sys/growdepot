@@ -67,6 +67,47 @@
         .quick-nav a:hover, .quick-nav a:focus { background: var(--accent-dim); border-color: var(--accent); }
         .quick-nav a.blog { background: var(--accent); color: #000; font-weight: 600; }
         
+        /* SETUP FINDER CTA */
+        .setup-finder-cta {
+            background: linear-gradient(135deg, rgba(74,222,128,0.15) 0%, rgba(74,222,128,0.05) 100%);
+            border: 2px solid rgba(74,222,128,0.4);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin: 16px 0;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .finder-icon {
+            font-size: 2.5rem;
+            flex-shrink: 0;
+        }
+        .finder-content {
+            flex: 1;
+        }
+        .finder-title {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 2px;
+        }
+        .finder-desc {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+        .finder-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: #000;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        .finder-btn:hover { opacity: 0.9; }
+        
         /* TRUST BADGES - Canadian specific */
         .trust-badge-container {
             display: flex;
@@ -309,6 +350,16 @@
             <a href="#nutes">🧪 Nutes</a>
             <a href="#vapes">💨 Vapes</a>
             <a href="blog/" class="blog">📝 Blog</a>
+        </div>
+        
+        <!-- Setup Finder CTA -->
+        <div class="setup-finder-cta">
+            <div class="finder-icon">🎯</div>
+            <div class="finder-content">
+                <div class="finder-title">Not sure what to buy?</div>
+                <div class="finder-desc">Answer 3 questions, get your exact equipment list</div>
+            </div>
+            <a href="grow-setup-finder.html" class="finder-btn">Find My Setup →</a>
         </div>
         
         <!-- Canadian Trust Badges -->
