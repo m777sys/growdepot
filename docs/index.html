@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <title>GrowDepot Canada — Grow Equipment & Supplies</title>
-    
+    <title>GrowDepot Canada - Grow Equipment & Supplies</title>
+
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-E20VJQJG27"></script>
     <script>
@@ -28,7 +28,7 @@
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); line-height: 1.4; }
-        
+
         /* TOP BAR - Fixed, minimal */
         .topbar {
             position: fixed; top: 0; left: 0; right: 0;
@@ -41,17 +41,17 @@
         .logo { font-size: 1.1rem; font-weight: 700; }
         .logo span { color: var(--accent); }
         .region { font-size: 0.65rem; background: linear-gradient(135deg, #d00, #fff, #d00); color: #000; padding: 2px 8px; border-radius: 10px; font-weight: 700; text-transform: uppercase; }
-        
+
         /* MAIN CONTENT */
         .container { padding: 60px 12px 100px; }
-        
+
         /* HERO - Above the fold */
         .hero {
             text-align: center; padding: 16px 0 20px;
         }
         .hero h1 { font-size: 1.4rem; font-weight: 600; margin-bottom: 6px; }
         .hero p { color: var(--text-dim); font-size: 0.85rem; }
-        
+
         /* QUICK CATEGORIES - Horizontal scroll */
         .quick-nav {
             display: flex; gap: 8px; overflow-x: auto;
@@ -66,7 +66,93 @@
         }
         .quick-nav a:hover, .quick-nav a:focus { background: var(--accent-dim); border-color: var(--accent); }
         .quick-nav a.blog { background: var(--accent); color: #000; font-weight: 600; }
-        
+
+        /* GROW TOOLS SECTION - Unified */
+        .tools-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 16px 0 24px;
+        }
+        .tools-header {
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        .tools-header h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .tools-header p {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+        .tools-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .tool-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.2s;
+        }
+        .tool-card:hover {
+            border-color: var(--accent);
+            background: rgba(74, 222, 128, 0.05);
+        }
+        .tool-card.featured {
+            border-color: rgba(74, 222, 128, 0.4);
+            background: linear-gradient(135deg, rgba(74,222,128,0.1) 0%, rgba(74,222,128,0.03) 100%);
+        }
+        .tool-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+        .tool-content {
+            flex: 1;
+        }
+        .tool-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+        }
+        .tool-desc {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+        .tool-arrow {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+        .tool-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: #000;
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 6px;
+            text-transform: uppercase;
+        }
+        @media (min-width: 768px) {
+            .tools-grid {
+                flex-direction: row;
+            }
+            .tool-card {
+                flex: 1;
+            }
+        }
+
         /* SETUP FINDER CTA */
         .setup-finder-cta {
             background: linear-gradient(135deg, rgba(74,222,128,0.15) 0%, rgba(74,222,128,0.05) 100%);
@@ -107,7 +193,7 @@
             flex-shrink: 0;
         }
         .finder-btn:hover { opacity: 0.9; }
-        
+
         /* TRUST BADGES - Canadian specific */
         .trust-badge-container {
             display: flex;
@@ -130,7 +216,7 @@
         }
         .trust-icon { font-size: 0.9rem; }
         .trust-text { font-weight: 500; }
-        
+
         /* GROWERS MAP */
         .growers-map {
             text-align: center;
@@ -199,7 +285,7 @@
             color: var(--accent);
             font-family: monospace;
         }
-        
+
         /* CALCULATOR CTA - Compact */
         .calc-cta {
             background: var(--card); border: 1px solid var(--border);
@@ -214,7 +300,7 @@
             text-decoration: none; padding: 8px 16px; border-radius: 6px;
             font-weight: 600; font-size: 0.85rem;
         }
-        
+
         /* SECTIONS */
         .section { margin-bottom: 24px; }
         .section-title {
@@ -222,7 +308,7 @@
             padding: 10px 4px; border-bottom: 1px solid var(--border);
             margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
         }
-        
+
         /* PRODUCTS - Compact cards */
         .product-card {
             background: var(--card); border: 1px solid var(--border);
@@ -246,7 +332,7 @@
             background: var(--accent); color: #000; font-size: 0.65rem;
             padding: 2px 8px; border-radius: 0 0 4px 4px;
         }
-        
+
         /* HORIZONTAL PRODUCT SCROLL (for sections with many items) */
         .scroll-section {
             display: flex; gap: 10px; overflow-x: auto;
@@ -268,14 +354,14 @@
             color: #000; text-decoration: none; padding: 10px;
             border-radius: 6px; font-weight: 600; font-size: 0.85rem;
         }
-        
+
         /* WHY SECTION - Compact */
         .why { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
         .why h3 { font-size: 0.95rem; margin-bottom: 12px; }
         .why-grid { display: flex; gap: 12px; }
         .why-item { flex: 1; text-align: center; font-size: 0.75rem; }
         .why-icon { font-size: 1.5rem; margin-bottom: 4px; }
-        
+
         /* STICKY CTA (bottom) */
         .sticky-cta {
             position: fixed; bottom: 0; left: 0; right: 0;
@@ -293,7 +379,7 @@
         .sticky-cta a.secondary {
             background: var(--card); color: var(--text); border: 1px solid var(--border);
         }
-        
+
         /* AFFILIATE NOTICE - Compact */
         .affiliate-note {
             text-align: center; font-size: 0.7rem; color: var(--text-dim);
@@ -301,7 +387,7 @@
             margin-bottom: 60px;
         }
         .affiliate-note a { color: var(--accent); }
-        
+
         /* DESKTOP ENHANCEMENTS */
         @media (min-width: 768px) {
             .container { max-width: 1100px; margin: 0 auto; padding: 70px 24px; }
@@ -326,7 +412,7 @@
             <h1>Build Your Grow Setup</h1>
             <p>Hand-picked equipment for Canadian growers. Amazon.ca links, CAD prices, no surprise duties.</p>
         </div>
-        
+
         <!-- SEASONAL URGENCY BANNER -->
         <div class="seasonal-banner">
             <div class="seasonal-content">
@@ -351,17 +437,7 @@
             <a href="#vapes">💨 Vapes</a>
             <a href="blog/" class="blog">📝 Blog</a>
         </div>
-        
-        <!-- Setup Finder CTA -->
-        <div class="setup-finder-cta">
-            <div class="finder-icon">🎯</div>
-            <div class="finder-content">
-                <div class="finder-title">Not sure what to buy?</div>
-                <div class="finder-desc">Answer 3 questions, get your exact equipment list</div>
-            </div>
-            <a href="grow-setup-finder.html" class="finder-btn">Find My Setup →</a>
-        </div>
-        
+
         <!-- Canadian Trust Badges -->
         <div class="trust-badge-container">
             <div class="trust-badge">
@@ -381,7 +457,7 @@
                 <span class="trust-text">Prime Eligible</span>
             </div>
         </div>
-        
+
         <!-- Used by Canadian Growers -->
         <div class="growers-map">
             <p>🌱 Trusted by growers in:</p>
@@ -399,14 +475,34 @@
                 <span>Edmonton</span>
             </div>
         </div>
-        
-        <!-- Calculator CTA -->
-        <div class="calc-cta">
-            <h3>🧮 Not sure what you need?</h3>
-            <p>Takes 60 seconds. Get exact tent size, LED wattage, total cost.</p>
-            <a href="grow-calculator.html">Start Calculator →</a>
+
+        <!-- Grow Tools Section - Unified -->
+        <div class="tools-section">
+            <div class="tools-header">
+                <h3>🧰 Need Help Choosing?</h3>
+                <p>Pick the tool that fits your style</p>
+            </div>
+            <div class="tools-grid">
+                <a href="grow-calculator.html" class="tool-card">
+                    <div class="tool-icon">🧮</div>
+                    <div class="tool-content">
+                        <div class="tool-title">Budget Calculator</div>
+                        <div class="tool-desc">Enter your budget → get matching equipment</div>
+                    </div>
+                    <div class="tool-arrow">→</div>
+                </a>
+                <a href="grow-setup-finder.html" class="tool-card featured">
+                    <div class="tool-icon">🎯</div>
+                    <div class="tool-content">
+                        <div class="tool-title">Setup Finder<span class="tool-badge">New</span></div>
+                        <div class="tool-desc">Answer 3 questions → get your exact setup</div>
+                    </div>
+                    <div class="tool-arrow">→</div>
+                </a>
+            </div>
         </div>
-        
+
+
         <!-- Grow Lights -->
         <section class="section" id="lights">
             <h2 class="section-title">💡 Grow Lights</h2>
@@ -446,7 +542,7 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- Grow Tents -->
         <section class="section" id="tents">
             <h2 class="section-title">⛺ Grow Tents</h2>
@@ -486,7 +582,7 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- Ventilation -->
         <section class="section" id="vent">
             <h2 class="section-title">💨 Ventilation & Air</h2>
@@ -526,7 +622,7 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- Nutrients (horizontal scroll for more items) -->
         <section class="section" id="nutes">
             <h2 class="section-title">🧪 Nutrients & Mediums</h2>
@@ -554,7 +650,7 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- Vaporizers -->
         <section class="section" id="vapes">
             <h2 class="section-title">💨 Dry Herb Vaporizers</h2>
@@ -594,7 +690,7 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- Why Amazon.ca -->
         <div class="section">
             <div class="why">
@@ -615,17 +711,17 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Affiliate Footer -->
         <div class="affiliate-note">
             <p>🔗 This page contains Amazon.ca affiliate links. We earn a commission at no extra cost to you. <a href="#disclosure">Learn more</a></p>
             <p style="margin-top:8px;">DISCLOSURE: GrowDepot participates in the Amazon Associates Program. All prices in CAD. Products ship from Canada via Amazon.ca.</p>
         </div>
     </div>
-    
+
     <!-- Sticky CTA (Mobile Only) -->
     <div class="sticky-cta">
-        <a href="grow-calculator.html">🧮 Calculator</a>
+        <a href="grow-setup-finder.html">🎯 Find Setup</a>
         <a href="blog/" class="secondary">📝 Blog</a>
     </div>
 
@@ -635,24 +731,24 @@
             const now = new Date();
             const currentYear = now.getFullYear();
             const plantingDate = new Date(currentYear, 3, 15); // April 15
-            
+
             // If April 15 has passed this year, target next year
             if (now > plantingDate) {
                 plantingDate.setFullYear(currentYear + 1);
             }
-            
+
             const diffTime = plantingDate - now;
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-            
+
             const daysElement = document.getElementById('daysLeft');
             if (daysElement) {
                 daysElement.textContent = diffDays;
             }
         }
-        
+
         // Update countdown on load
         updateCountdown();
-        
+
         // Update daily
         setInterval(updateCountdown, 86400000);
     </script>
