@@ -113,6 +113,51 @@
         }
         .growers-map .cities span:nth-child(odd) { font-weight: 600; }
         .growers-map .cities span:nth-child(even) { color: var(--border); opacity: 0.5; }
+
+        /* SEASONAL URGENCY BANNER */
+        .seasonal-banner {
+            background: linear-gradient(135deg, rgba(74, 222, 128, 0.15) 0%, rgba(74, 222, 128, 0.05) 100%);
+            border: 2px solid rgba(74, 222, 128, 0.5);
+            border-radius: 12px;
+            padding: 14px 16px;
+            margin: 8px 0 16px;
+        }
+        .seasonal-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+        .seasonal-emoji {
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+        .seasonal-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .seasonal-text strong {
+            font-size: 0.95rem;
+            color: var(--accent);
+        }
+        .seasonal-detail {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+        .seasonal-countdown {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            padding-top: 8px;
+            border-top: 1px solid var(--border);
+        }
+        .seasonal-countdown span:first-child { color: #ffd93d; }
+        #daysLeft {
+            font-weight: 700;
+            color: var(--accent);
+            font-family: monospace;
+        }
         
         /* CALCULATOR CTA - Compact */
         .calc-cta {
@@ -241,6 +286,21 @@
             <p>Hand-picked equipment for Canadian growers. Amazon.ca links, CAD prices, no surprise duties.</p>
         </div>
         
+        <!-- SEASONAL URGENCY BANNER -->
+        <div class="seasonal-banner">
+            <div class="seasonal-content">
+                <span class="seasonal-emoji">🌱</span>
+                <div class="seasonal-text">
+                    <strong>Growing Season Starts in 45 Days</strong>
+                    <span class="seasonal-detail">Equipment ships 2-3 weeks. Order now to be ready by April 15.</span>
+                </div>
+            </div>
+            <div class="seasonal-countdown">
+                <span>⏰ </span>
+                <span id="daysLeft">45</span> days until planting
+            </div>
+        </div>
+
         <!-- Quick Nav -->
         <div class="quick-nav">
             <a href="#lights">💡 Lights</a>
@@ -517,5 +577,33 @@
         <a href="grow-calculator.html">🧮 Calculator</a>
         <a href="blog/" class="secondary">📝 Blog</a>
     </div>
+
+    <script>
+        // Seasonal countdown timer
+        function updateCountdown() {
+            const now = new Date();
+            const currentYear = now.getFullYear();
+            const plantingDate = new Date(currentYear, 3, 15); // April 15
+            
+            // If April 15 has passed this year, target next year
+            if (now > plantingDate) {
+                plantingDate.setFullYear(currentYear + 1);
+            }
+            
+            const diffTime = plantingDate - now;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            
+            const daysElement = document.getElementById('daysLeft');
+            if (daysElement) {
+                daysElement.textContent = diffDays;
+            }
+        }
+        
+        // Update countdown on load
+        updateCountdown();
+        
+        // Update daily
+        setInterval(updateCountdown, 86400000);
+    </script>
 </body>
 </html>
