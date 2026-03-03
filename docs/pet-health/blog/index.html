@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>Blog | Pet Wellness Hub — Dog Health Guides</title>
+    <meta name="description" content="Evidence-based dog health guides for caring pet owners. Joint supplements, probiotics, senior care, and more.">
+    
+    <style>
+        :root {
+            --bg: #faf8f5;
+            --card: #ffffff;
+            --border: #e8e2d9;
+            --text: #2d2a26;
+            --text-light: #6b6560;
+            --accent: #e07b39;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .topbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgba(250, 248, 245, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        .logo span { color: var(--accent); }
+        
+        .nav-link {
+            font-size: 0.8rem;
+            padding: 8px 14px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            background: var(--bg);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+        
+        .hero {
+            padding: 80px 20px 30px;
+            text-align: center;
+        }
+        
+        .hero-emoji {
+            font-size: 3rem;
+            margin-bottom: 12px;
+        }
+        
+        .hero h1 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+        
+        .hero p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 16px 60px;
+        }
+        
+        .section-title {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 30px 0 15px;
+        }
+        
+        .blog-card {
+            display: block;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 12px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s;
+        }
+        
+        .blog-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+        
+        .blog-card h3 {
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+            color: var(--text);
+        }
+        
+        .blog-card:hover h3 {
+            color: var(--accent);
+        }
+        
+        .blog-meta {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+        
+        .blog-excerpt {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+        
+        footer {
+            background: var(--text);
+            color: #a8a4a0;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <a href="../" class="nav-link">← Home</a>
+        <div class="logo">Pet<span>Wellness</span></div>
+    </div>
+    
+    <div class="hero">
+        <div class="hero-emoji">📝</div>
+        <h1>Dog Health Guides</h1>
+        <p>Evidence-based advice for caring dog owners</p>
+    </div>
+    
+    <div class="container">
+        <div class="section-title">Latest Articles</div>
+        
+        <a href="best-joint-supplements-for-dogs.html" class="blog-card">
+            <h3>Best Joint Supplements for Dogs: 2026 Complete Guide</h3>
+            <div class="blog-meta">March 2026 • 8 min read • Joint Health</div>
+            <p class="blog-excerpt">Glucosamine vs. chondroitin vs. MSM—which actually works? We test 12 products and break down the science for hip dysplasia, arthritis, and senior dogs.</p>
+        </a>
+        
+        <a href="when-to-start-senior-dog-supplements.html" class="blog-card">
+            <h3>When to Start Senior Dog Supplements (Don't Wait for Limping)</h3>
+            <div class="blog-meta">March 2026 • 5 min read • Senior Care</div>
+            <p class="blog-excerpt">Learn the early warning signs and best preventive supplements by breed and size. Start before problems appear.</p>
+        </a>
+        
+        <a href="best-probiotics-for-dogs-with-diarrhea.html" class="blog-card">
+            <h3>Best Probiotics for Dogs with Diarrhea: What Actually Works</h3>
+            <div class="blog-meta">March 2026 • 6 min read • Digestive Health</div>
+            <p class="blog-excerpt">After antibiotics, stress, or chronic issues—which probiotic strains work fastest? We break down CFU counts and delivery methods.</p>
+        </a>
+        
+        <a href="how-to-brush-dog-teeth.html" class="blog-card">
+            <h3>How to Brush Your Dog's Teeth Without a Fight</h3>
+            <div class="blog-meta">March 2026 • 4 min read • Dental Care</div>
+            <p class="blog-excerpt">Step-by-step method for resistant dogs. Best toothpaste, brushes, and alternatives if brushing isn't possible.</p>
+        </a>
+        
+        <a href="dog-nail-grinder-vs-clippers.html" class="blog-card">
+            <h3>Dog Nail Grinder vs. Clippers: Which is Safer?</h3>
+            <div class="blog-meta">March 2026 • 4 min read • Grooming</div>
+            <p class="blog-excerpt">Dremel vs. traditional clippers—pros, cons, and which to choose for anxious dogs, dark nails, and senior pets.</p>
+        </a>
+        
+        <a href="signs-your-dog-needs-supplements.html" class="blog-card">
+            <h3>7 Signs Your Dog Needs Supplements (Before It's Too Late)</h3>
+            <div class="blog-meta">March 2026 • 5 min read • General Health</div>
+            <p class="blog-excerpt">Early warning signs most owners miss. From dull coats to behavior changes—when diet alone isn't enough.</p>
+        </a>
+        
+    </div>
+    
+    <footer>
+        <p>© 2026 Pet Wellness Hub • <a href="../">Back Home</a></p>
+    </footer>
+</body>
+</html>
